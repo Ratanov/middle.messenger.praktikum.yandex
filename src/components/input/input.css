@@ -15,7 +15,9 @@
   font-size: 13px;
   font-weight: 500;
   user-select: none;
-  transition: font-size 0.5s, transform 0.5s;
+  transition:
+    font-size 0.5s,
+    transform 0.5s;
 }
 
 .input__element {
