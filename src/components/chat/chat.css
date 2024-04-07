@@ -10,7 +10,7 @@
 
 .chat:after {
   position: absolute;
-  content: '';
+  content: "";
   border-bottom: 1px solid var(--border-color);
   width: 95%;
   left: 50%;

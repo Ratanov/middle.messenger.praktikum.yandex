@@ -80,7 +80,8 @@
   border-radius: 50%;
 }
 .button__menu:hover {
-  background: url(/assets/svg/three-dots.svg) no-repeat center, var(--bg-second-color);
+  background: url(/assets/svg/three-dots.svg) no-repeat center,
+    var(--bg-second-color);
 }
 
 .button__attach {
