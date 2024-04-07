@@ -1,0 +1,34 @@
+<div id="{{id}}" class="modal-backdrop">
+  <div class="modal">
+    <a class="modal__close" href="#">❌</a>
+    <div class="text-center">
+      {{> Title text=title className=titleClassName }}
+    </div>
+    <div class="my-5 py-5 font-13 text-center">
+      <!-- Пример модалки для смены аватара -->
+      {{#if upload}}
+          {{> Link url="/" text="Выбрать файл на компьютере"}}
+      {{/if}}
+
+      {{#if img}}
+          загруженная картинка
+      {{/if}}
+
+      <!-- Пример модалки для добавления пользователя -->
+      {{#ifEqual id "modal_add_user"}}
+          {{> Input label="Логин" name="login" }}
+      {{/ifEqual}}
+
+      <!-- Пример модалки для удаления пользователя -->
+      {{#ifEqual id "modal_remove_user"}}
+          {{> Input label="Логин" name="login" }}
+      {{/ifEqual}}
+    </div>
+    {{#if button}}
+      {{> Button text=button type="primary" name="modal-btn"}}
+    {{/if}}
+    {{#if bottom}}
+      <div class="{{bottomClassName}}">{{bottom}}</div>
+    {{/if}}
+  </div>
+</div>

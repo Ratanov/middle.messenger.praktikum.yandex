@@ -1,0 +1,29 @@
+.profile__avatar {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: var(--bg-second-color);
+  position: relative;
+  cursor: pointer;
+}
+.profile__avatar img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.profile__avatar--edit {
+  display: none;
+}
+.profile__avatar:hover {
+  background: var(--text-secondary-color);
+}
+.profile__avatar:hover .profile__avatar--edit {
+  display: block;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}

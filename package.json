@@ -1,0 +1,21 @@
+{
+  "name": "01-homework",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "author": "Ratanov",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.19",
+    "handlebars": "4.7.8",
+    "postcss": "^8.4.38",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-handlebars": "^1.6.0",
+    "express": "^4.19.2"
+  }
+}

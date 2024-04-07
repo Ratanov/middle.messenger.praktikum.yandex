@@ -1,0 +1,14 @@
+<div class="container">
+    <Form class="sign-in-form">
+        <div>
+            {{> Title text="Вход" className="title__h2 text-center"}}
+            {{> Input label="Логин" name="login" }}
+            {{> Input label="Пароль" name="password" }}
+        </div>
+        <div>
+            {{> Button text="Авторизоваться" type="primary" name="send" }}
+            {{> Button text="Нет аккаунта?" type="link" name="sign_up" }}
+        </div>
+        {{!-- {{test}} --}}
+    </Form>
+</div>

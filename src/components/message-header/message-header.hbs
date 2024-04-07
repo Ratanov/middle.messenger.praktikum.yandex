@@ -1,0 +1,10 @@
+<div class="messages__header mx-5">
+    <div class="flex align-center">
+        <div class="circle"></div>
+        {{> Title text="Вадим" className="ml-2"}}
+    </div>
+    {{> Button type="icon" className="button__menu popup-trigger" name="popup_user"}}
+    {{> Popup id="popup_user" position="bottom" }}
+</div>
+{{> Modal id="modal_add_user" title="Добавить пользователя" button="Добавить"}}
+{{> Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить"}}

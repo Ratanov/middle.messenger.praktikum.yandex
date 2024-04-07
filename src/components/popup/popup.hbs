@@ -1,0 +1,27 @@
+<div id="{{id}}" class="popup popup--{{position}}">
+  
+  {{#ifEqual id "popup_user"}}
+  <!-- Пример popup 1  -->
+    {{#each (popup-user)}}
+      <div class="flex py-1">
+        <div class="popup__img">
+          <img src="{{img}}" alt="{{text}}" />
+        </div>
+        {{> Link url=url text=text className="ml-2"}}
+      </div>
+    {{/each}}
+  {{/ifEqual}}
+
+  
+  {{#ifEqual id "popup_attach"}}
+  <!-- Пример popup 2  -->
+    {{#each (popup-attach)}}
+      <div class="flex py-1">
+        <div class="popup__img">
+          <img src="{{img}}" alt="{{text}}" />
+        </div>
+        {{> Link url=url text=text className="ml-2"}}
+      </div>
+    {{/each}}
+  {{/ifEqual}}
+</div>

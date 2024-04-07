@@ -1,0 +1,20 @@
+{{#ifEqual type "row"}}
+    <div class="profile__row {{rowClassName}}">
+        <span class="profile__label">{{label}}</span>
+        <span class="profile__text" name="{{name}}">{{text}}</span>
+    </div>
+{{/ifEqual}}
+{{#ifEqual type "link"}}
+    <div class="profile__row {{rowClassName}}">
+        {{> Link text=label url="/" className=className name=name }}
+    </div>
+{{/ifEqual}}
+{{#ifEqual type "button"}}
+    {{> Button type="primary" text=label className=className name="row_btn" }}
+{{/ifEqual}}
+{{#ifEqual type "row-pswd"}}
+    <div class="profile__row {{rowClassName}}">
+        <span class="profile__label">{{label}}</span>
+        <input class="profile__pswd" type="password" value="{{text}}" name="{{name}}" autocapitalize="off" />
+    </div>
+{{/ifEqual}}

@@ -1,0 +1,16 @@
+<div class="container">
+    <Form class="sign-up-form">
+        {{> Title text="Регистрация" className="title__h2 text-center"}}
+        <div>
+            {{> Input label="Почта" name="email" }}
+            {{> Input label="Логин" name="login" }}
+            {{> Input label="Имя" name="first_name" }}
+            {{> Input label="Фамилия" name="second_name" }}
+            {{> Input label="Телефон" name="phone" }}
+            {{> Input label="Пароль" name="password" }}
+            {{> Input label="Пароль (ещё раз)" name="password_repeat" }}
+        </div>
+        {{> Button text="Зарегестрироваться" type="primary" className="mt-4" name="send" }}
+        {{> Button text="Войти" type="link" name="sign_in" }}
+    </Form>
+</div>

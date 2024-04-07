@@ -1,0 +1,94 @@
+.button {
+  background-color: initial;
+  border: none;
+  font-weight: 500;
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.button__primary {
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: 13px;
+}
+
+.button__link {
+  color: var(--main-color);
+  font-size: 11px;
+  text-align: center;
+}
+
+.button-arrow {
+  background-color: var(--main-color);
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+}
+
+.button-arrow__left,
+.button-arrow__right {
+  margin: 0 auto;
+  width: 11px;
+  height: 1.6px;
+  position: relative;
+  background-color: #fff;
+}
+
+.button-arrow__left::after,
+.button-arrow__left::before,
+.button-arrow__right::after,
+.button-arrow__right::before {
+  content: "";
+  background-color: #fff;
+  display: inline-block;
+  width: 7px;
+  height: 1.6px;
+  position: absolute;
+}
+
+.button-arrow__right::after {
+  transform: rotate(45deg);
+  bottom: 2px;
+}
+
+.button-arrow__right::before {
+  transform: rotate(-45deg);
+  top: 2px;
+}
+
+.button-arrow__left::after {
+  transform: rotate(-45deg);
+  bottom: 2px;
+  left: -1px;
+}
+
+.button-arrow__left::before {
+  transform: rotate(45deg);
+  top: 2px;
+  left: -1px;
+}
+.button__icon {
+  width: 34px;
+  height: 34px;
+}
+.button__menu {
+  background: url(/assets/svg/three-dots.svg) no-repeat center;
+  border-radius: 50%;
+}
+.button__menu:hover {
+  background: url(/assets/svg/three-dots.svg) no-repeat center, var(--bg-second-color);
+}
+
+.button__attach {
+  background: url(/assets/svg/attach.svg) no-repeat center;
+}
+.button__send {
+  background: url(/assets/svg/send.svg) no-repeat center;
+}
+.button__back {
+  background: url(/assets/svg/back.svg) no-repeat center;
+}
