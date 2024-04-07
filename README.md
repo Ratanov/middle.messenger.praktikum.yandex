@@ -8,7 +8,7 @@ https://sprint-1--incomparable-starlight-71bf8d.netlify.app/
 ## Установка
 
 - `npm install` — установка стабильной версии,
-- `npm run dev` — запуск версии для разработчика,
+- `npm run start` — запуск версии для разработчика,
 - `npm run build` — сборка стабильной версии.
 
 ## Прототип
