@@ -2,8 +2,8 @@
     <Form class="sign-in-form">
         <div>
             {{> Title text="Вход" className="title__h2 text-center"}}
-            {{> Input label="Логин" name="login" }}
-            {{> Input label="Пароль" name="password" }}
+            {{> Input label="Логин" name="login" default=true }}
+            {{> Input label="Пароль" name="password" default=true }}
         </div>
         <div>
             {{> Button text="Авторизоваться" type="primary" name="send" }}

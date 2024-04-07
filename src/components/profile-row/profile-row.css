@@ -16,6 +16,8 @@
 }
 .profile__text {
   color: var(--text-secondary-color);
+  border: none;
+  text-align: right;
 }
 .profile__edit {
   margin-top: 2rem;

@@ -16,12 +16,12 @@
 
       <!-- Пример модалки для добавления пользователя -->
       {{#ifEqual id "modal_add_user"}}
-          {{> Input label="Логин" name="login" }}
+          {{> Input label="Логин" name="login" default=true }}
       {{/ifEqual}}
 
       <!-- Пример модалки для удаления пользователя -->
       {{#ifEqual id "modal_remove_user"}}
-          {{> Input label="Логин" name="login" }}
+          {{> Input label="Логин" name="login" default=true }}
       {{/ifEqual}}
     </div>
     {{#if button}}

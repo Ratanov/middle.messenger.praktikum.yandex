@@ -1,7 +1,6 @@
 {{#ifEqual type "row"}}
     <div class="profile__row {{rowClassName}}">
-        <span class="profile__label">{{label}}</span>
-        <span class="profile__text" name="{{name}}">{{text}}</span>
+        {{> Input label=label name=name profile=true }}
     </div>
 {{/ifEqual}}
 {{#ifEqual type "link"}}

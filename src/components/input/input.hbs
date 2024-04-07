@@ -1,6 +1,17 @@
-<div class="input">
-  <label class="input__container">
-    <input class="input__element" name="{{name}}" placeholder="{{placeholder}}" />
-    <div class="input__label">{{label}}</div>
-  </label>
+<div class="w-100">
+{{#if default}}
+  <div class="input">
+    <label class="input__container">
+      <input class="input__element" name="{{name}}" placeholder="{{placeholder}}" />
+      <div class="input__label">{{label}}</div>
+    </label>
+  </div>
+{{/if}}
+
+{{#if profile}}
+  <div class="flex justify-between">
+    <span class="profile__label">{{label}}</span>
+    <input class="profile__text" name="{{name}}" value="{{text}}" />
+  </div>
+{{/if}}
 </div>
