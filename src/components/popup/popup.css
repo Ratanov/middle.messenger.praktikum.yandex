@@ -32,6 +32,7 @@
   text-decoration: none;
 }
 /* Для триггера всплывающего окна */
-.popup-trigger:hover + .popup, .popup:hover {
+.popup-trigger:hover + .popup,
+.popup:hover {
   display: block;
 }

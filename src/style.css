@@ -1,13 +1,13 @@
 :root {
-    --main-color: #3369f3;
-    --second-color: #e4edfd;
-    --error-color: #ff2f2f;
-    --text-color: #1e1e1e;
-    --text-secondary-color: #999999;
-    --bg-color: #fbfbfb;
-    --bg-second-color: #efefef;
-    --border-color: #eaeaea;
-  }
+  --main-color: #3369f3;
+  --second-color: #e4edfd;
+  --error-color: #ff2f2f;
+  --text-color: #1e1e1e;
+  --text-secondary-color: #999999;
+  --bg-color: #fbfbfb;
+  --bg-second-color: #efefef;
+  --border-color: #eaeaea;
+}
 /* Сброс стилей для обнуления значений по умолчанию */
 * {
   margin: 0;
@@ -27,75 +27,75 @@ body {
   min-height: 100vh;
 }
 .w-100 {
-  width: 100%!important;
+  width: 100% !important;
 }
 .mt-5 {
-  margin-top: 1.25rem!important;
+  margin-top: 1.25rem !important;
 }
 .mt-4 {
-  margin-top: 1rem!important;
+  margin-top: 1rem !important;
 }
 .mt-2 {
-  margin-top: 0.5rem!important;
+  margin-top: 0.5rem !important;
 }
 .ml-1 {
-  margin-left: 0.25rem!important;
+  margin-left: 0.25rem !important;
 }
 .ml-2 {
-  margin-left: 0.5rem!important;
+  margin-left: 0.5rem !important;
 }
 .mx-1 {
-  margin-left: 0.25rem!important;
-  margin-right: 0.25rem!important;
+  margin-left: 0.25rem !important;
+  margin-right: 0.25rem !important;
 }
 .mx-2 {
-  margin-left: 0.5rem!important;
-  margin-right: 0.5rem!important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
 }
 .mx-5 {
-  margin-left: 1.25rem!important;
-  margin-right: 1.25rem!important;
+  margin-left: 1.25rem !important;
+  margin-right: 1.25rem !important;
 }
 .my-5 {
-  margin-top: 1.25rem!important;
-  margin-bottom: 1.25rem!important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 1.25rem !important;
 }
 .pt-5 {
-  padding-top: 1.25rem!important;
+  padding-top: 1.25rem !important;
 }
 .px-5 {
-  padding-left: 1.25rem!important;
-  padding-right: 1.25rem!important;
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
 }
 .py-1 {
-  padding-top: 0.25rem!important;
-  padding-bottom: 0.25rem!important;
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
 }
 .py-5 {
-  padding-top: 1.25rem!important;
-  padding-bottom: 1.25rem!important;
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
 }
 .text-center {
-  text-align: center!important;
+  text-align: center !important;
 }
 .flex {
-  display: flex!important;
+  display: flex !important;
 }
 .flex-column {
-  flex-direction: column!important;
+  flex-direction: column !important;
 }
 .justify-between {
-  justify-content: space-between!important;
+  justify-content: space-between !important;
 }
 .align-center {
-  align-items: center!important;
+  align-items: center !important;
 }
 .font-11 {
-  font-size: 13px!important;
+  font-size: 13px !important;
 }
 .font-13 {
-  font-size: 13px!important;
+  font-size: 13px !important;
 }
 .danger {
-  color: var(--error-color)!important;
+  color: var(--error-color) !important;
 }
