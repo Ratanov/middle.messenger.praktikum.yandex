@@ -6,8 +6,11 @@ import * as Pages from './pages';
 Handlebars.registerHelper(
   'ifEqual',
   function (
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     this: any,
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     value1: any,
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
     value2: any,
     options: Handlebars.HelperOptions,
   ) {
@@ -33,7 +36,7 @@ Object.entries(Components).forEach(([name, component]) => {
 });
 
 function navigate(page: string) {
-  //@ts-ignore
+  //@ts-expect-error: ToDo
   const [source, context] = pages[page];
   const container = document.getElementById('app')!;
   container.innerHTML = Handlebars.compile(source)(context);
@@ -42,7 +45,7 @@ function navigate(page: string) {
 document.addEventListener('DOMContentLoaded', () => navigate('nav'));
 
 document.addEventListener('click', (e) => {
-  //@ts-ignore
+  //@ts-expect-error: ToDo
   const page = e.target.getAttribute('page');
   if (page) {
     navigate(page);
