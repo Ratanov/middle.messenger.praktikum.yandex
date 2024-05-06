@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import * as Components from './components';
-import * as Pages from './pages';
+import { navigate } from './core/navigate';
+import { registerComponent } from './core/registerComponent';
 
 // Вспомогательная функцию ifEqual для сравнения по строке
 Handlebars.registerHelper(
@@ -18,38 +19,14 @@ Handlebars.registerHelper(
   },
 );
 
-const pages = {
-  nav: [Pages.Navigate],
-  'sign-in': [Pages.SignIn, { test: '123' }],
-  'sign-up': [Pages.SignUp],
-  '404': [Pages.Page404],
-  '500': [Pages.Page500],
-  app: [Pages.App],
-  profile: [Pages.Profile],
-  'profile-edit': [Pages.ProfileEdit],
-  'profile-edit-pswd': [Pages.ProfileEditPswd],
-  modal: [Pages.Modal],
-};
-
-Object.entries(Components).forEach(([name, component]) => {
-  Handlebars.registerPartial(name, component);
-});
-
-function navigate(page: string) {
-  //@ts-expect-error: ToDo
-  const [source, context] = pages[page];
-  const container = document.getElementById('app')!;
-  container.innerHTML = Handlebars.compile(source)(context);
-}
-
-document.addEventListener('DOMContentLoaded', () => navigate('nav'));
-
-document.addEventListener('click', (e) => {
-  //@ts-expect-error: ToDo
-  const page = e.target.getAttribute('page');
-  if (page) {
-    navigate(page);
-    e.preventDefault();
-    e.stopImmediatePropagation();
-  }
-});
+document.addEventListener('DOMContentLoaded', () => navigate('start-page'));
+Handlebars.registerPartial('Form', Components.Form);
+registerComponent('Title', Components.Title);
+registerComponent('Input', Components.Input);
+registerComponent('Button', Components.Button);
+registerComponent('Link', Components.Link);
+registerComponent('ProfileRow', Components.ProfileRow);
+registerComponent('Message', Components.Message);
+registerComponent('Chat', Components.Chat);
+registerComponent('Popup', Components.Popup);
+registerComponent('Modal', Components.Modal);

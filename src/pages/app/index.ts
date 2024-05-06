@@ -1,2 +1,2 @@
 import './app.css';
-export { default as App } from './app.hbs?raw';
+export { App } from './app';

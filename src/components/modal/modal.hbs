@@ -5,7 +5,7 @@
       {{> Title text=title className=titleClassName }}
     </div>
     <div class="my-5 py-5 font-13 text-center">
-      <!-- Пример модалки для смены аватара -->
+      <!-- Для смены аватара -->
       {{#if upload}}
           {{> Link url="/" text="Выбрать файл на компьютере"}}
       {{/if}}
@@ -14,12 +14,12 @@
           загруженная картинка
       {{/if}}
 
-      <!-- Пример модалки для добавления пользователя -->
+      <!-- Для добавления пользователя -->
       {{#ifEqual id "modal_add_user"}}
           {{> Input label="Логин" name="login" default=true }}
       {{/ifEqual}}
 
-      <!-- Пример модалки для удаления пользователя -->
+      <!-- Для удаления пользователя -->
       {{#ifEqual id "modal_remove_user"}}
           {{> Input label="Логин" name="login" default=true }}
       {{/ifEqual}}

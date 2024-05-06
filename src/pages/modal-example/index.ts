@@ -1,1 +1,1 @@
-export { default as Modal } from './modal-example.hbs?raw';
+export { default as ModalExample } from './modal-example';

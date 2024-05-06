@@ -1,5 +1,5 @@
 <div class="container">
-    <Form class="sign-up-form">
+    {{#> Form }}
         {{> Title text="Регистрация" className="title__h2 text-center"}}
         <div>
             {{> Input label="Почта" name="email" default=true }}
@@ -10,7 +10,7 @@
             {{> Input label="Пароль" name="password" default=true }}
             {{> Input label="Пароль (ещё раз)" name="password_repeat" default=true }}
         </div>
-        {{> Button text="Зарегестрироваться" type="primary" className="mt-4" name="send" }}
+        {{> Button text="Зарегестрироваться" type="primary" className="mt-5" name="send" }}
         {{> Button text="Войти" type="link" name="sign_in" }}
-    </Form>
+    {{/Form}}
 </div>

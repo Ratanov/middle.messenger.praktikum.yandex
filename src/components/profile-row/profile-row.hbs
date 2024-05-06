@@ -1,11 +1,11 @@
 {{#ifEqual type "row"}}
     <div class="profile__row {{rowClassName}}">
-        {{> Input label=label name=name profile=true }}
+        {{> Input name=name label=label profile=true }}
     </div>
 {{/ifEqual}}
 {{#ifEqual type "link"}}
     <div class="profile__row {{rowClassName}}">
-        {{> Link text=label url="/" className=className name=name }}
+        {{> Link name=name text=label url="/" className=className }}
     </div>
 {{/ifEqual}}
 {{#ifEqual type "button"}}

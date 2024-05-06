@@ -1,5 +1,5 @@
 <div class="container">
-    <Form class="sign-in-form">
+    {{#> Form }}
         <div>
             {{> Title text="Вход" className="title__h2 text-center"}}
             {{> Input label="Логин" name="login" default=true }}
@@ -9,6 +9,5 @@
             {{> Button text="Авторизоваться" type="primary" name="send" }}
             {{> Button text="Нет аккаунта?" type="link" name="sign_up" }}
         </div>
-        {{!-- {{test}} --}}
-    </Form>
+    {{/Form}}
 </div>
