@@ -1,9 +1,15 @@
 import Handlebars, { HelperOptions } from 'handlebars';
-import Block from './Block';
+import Block, { RefType } from './Block';
 
 interface BlockConstructable<Props extends object, R extends {}> {
   new (props: Props): Block<Props, R>;
 }
+
+export interface IChildren<Props extends object, R extends RefType> {
+  component: Block<Props, R>;
+  embed: (fragment: DocumentFragment) => void;
+}
+
 export function registerComponent<Props extends object, R extends {}>(
   name: string,
   Component: BlockConstructable<Props, R>,
@@ -20,11 +26,9 @@ export function registerComponent<Props extends object, R extends {}>(
       const dataAttribute = `data-id="${component.id}"`;
 
       if ('ref' in hash) {
-        // eslint-disable-next-line no-param-reassign
         (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
       }
 
-      // eslint-disable-next-line no-param-reassign
       (data.root.__children = data.root.__children || []).push({
         component,
         embed(fragment: DocumentFragment) {

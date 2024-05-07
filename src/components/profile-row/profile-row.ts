@@ -11,18 +11,27 @@ export default class ProfileRow extends Block<object> {
     return `
       {{#ifEqual rowType "row"}}
         <div class="profile__row {{rowClassName}}">
-          {{{ Input ref=ref name=name type=type label=label value=value profile=true readonly=readonly }}}
+          <div class="flex justify-between w-100">
+            <span class="profile__label w-100">{{label}}</span>
+            {{{ Input 
+              ref=ref 
+              name=name 
+              type=type 
+              defaultValue=defaultValue 
+              readonly=readonly 
+            }}}
+          </div>
         </div>
       {{/ifEqual}}
 
       {{#ifEqual rowType "link"}}
         <div class="profile__row {{rowClassName}}">
-          {{{ Link text=label url="/" className=className name=name }}}
+          {{{ Link label=label className=className name=name }}}
         </div>
       {{/ifEqual}}
         
       {{#ifEqual rowType "button"}}
-        {{{ Button type="primary" text=label className=className name="row_btn" }}}
+        {{{ Button type="primary" label=label className=className name="row_btn" }}}
       {{/ifEqual}}
     `;
   }

@@ -4,36 +4,24 @@ import { navigate } from '../../core/navigate';
 export class StartPage extends Block<object> {
   constructor() {
     super({
-      onSignIn: () => {
-        navigate('sign-in');
-      },
-      onSignUp: () => {
-        navigate('sign-up');
-      },
-      on404: () => {
-        navigate('404');
-      },
-      on500: () => {
-        navigate('500');
-      },
-      onApp: () => {
-        navigate('app');
-      },
-      onProfile: () => {
-        navigate('profile');
-      },
+      onSighIn: { click: () => navigate('sign-in') },
+      onSignUp: { click: () => navigate('sign-up') },
+      onApp: { click: () => navigate('app') },
+      onProfile: { click: () => navigate('profile') },
+      on404: { click: () => navigate('404') },
+      on500: { click: () => navigate('500') },
     });
   }
 
   protected render(): string {
     return `
         <nav>
-            <li><a href="#" page="sign-in">Sign In</a></li>
-            <li><a href="#" page="sign-up">Sign Up</a></li>
-            <li><a href="#" page="404">404</a></li>
-            <li><a href="#" page="500">500</a></li>
-            <li><a href="#" page="app" >App</a></li>
-            <li><a href="#" page="profile">Profile</a></li>
+          <li>{{{ Link label="Авторизации" events=onSighIn }}}</li>
+          <li>{{{ Link label="Регистрация" events=onSignUp }}}</li>
+          <li>{{{ Link label="Главная" events=onApp }}}</li>
+          <li>{{{ Link label="Профиль" events=onProfile }}}</li>
+          <li>{{{ Link label="Ошибка 404" events=on404 }}}</li>
+          <li>{{{ Link label="Ошибка 500" events=on500 }}}</li>
         </nav>
     `;
   }

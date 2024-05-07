@@ -5,7 +5,7 @@ import cat3 from '/assets/03.jpg';
 export const profileProps: {
   name: string;
   label: string;
-  value?: string;
+  defaultValue?: string;
   rowType: string;
   className?: string;
   rowClassName?: string;
@@ -14,42 +14,42 @@ export const profileProps: {
   {
     name: 'email',
     label: 'Почта',
-    value: 'pochta@yandex.ru',
+    defaultValue: 'pochta@yandex.ru',
     rowType: 'row',
     readonly: true,
   },
   {
     name: 'login',
     label: 'Логин',
-    value: 'ratanovoleg',
+    defaultValue: 'ratanovoleg',
     rowType: 'row',
     readonly: true,
   },
   {
     name: 'first_name',
     label: 'Имя',
-    value: 'Олег',
+    defaultValue: 'Олег',
     rowType: 'row',
     readonly: true,
   },
   {
     name: 'second_name',
     label: 'Фамилия',
-    value: 'Ратанов',
+    defaultValue: 'Ратанов',
     rowType: 'row',
     readonly: true,
   },
   {
     name: 'display_name',
     label: 'Имя в чате',
-    value: 'Олег',
+    defaultValue: 'Олег',
     rowType: 'row',
     readonly: true,
   },
   {
     name: 'phone',
     label: 'Телефон',
-    value: '+7 960 087 87 08',
+    defaultValue: '+7 960 087 87 08',
     rowType: 'row',
     readonly: true,
   },
@@ -75,7 +75,7 @@ export const profileProps: {
 export const profileEditProps: {
   name: string;
   label: string;
-  value?: string;
+  defaultValue?: string;
   rowType: string;
   className?: string;
   rowClassName?: string;
@@ -83,37 +83,37 @@ export const profileEditProps: {
   {
     name: 'email',
     label: 'Почта',
-    value: 'pochta@yandex.ru',
+    defaultValue: 'pochta@yandex.ru',
     rowType: 'row',
   },
   {
     name: 'login',
     label: 'Логин',
-    value: 'ratanovoleg',
+    defaultValue: 'ratanovoleg',
     rowType: 'row',
   },
   {
     name: 'first_name',
     label: 'Имя',
-    value: 'Олег',
+    defaultValue: 'Олег',
     rowType: 'row',
   },
   {
     name: 'second_name',
     label: 'Фамилия',
-    value: 'Ратанов',
+    defaultValue: 'Ратанов',
     rowType: 'row',
   },
   {
     name: 'display_name',
     label: 'Имя в чате',
-    value: 'Олег',
+    defaultValue: 'Олег',
     rowType: 'row',
   },
   {
     name: 'phone',
     label: 'Телефон',
-    value: '+7 960 087 87 08',
+    defaultValue: '+7 960 087 87 08',
     rowType: 'row',
   },
   {
@@ -128,7 +128,7 @@ export const profileEditPasswordProps: {
   name: string;
   type?: string;
   label: string;
-  value?: string;
+  defaultValue?: string;
   rowType: string;
   className?: string;
   rowClassName?: string;
@@ -137,21 +137,21 @@ export const profileEditPasswordProps: {
     name: 'old_password',
     type: 'password',
     label: 'Старый пароль',
-    value: 'someText',
+    defaultValue: 'someText',
     rowType: 'row',
   },
   {
     name: 'new_password',
     type: 'password',
     label: 'Новый пароль',
-    value: 'someTextsomeText',
+    defaultValue: 'someTextsomeText',
     rowType: 'row',
   },
   {
     name: 'repeat_new_password',
     type: 'password',
     label: 'Повторите новый пароль',
-    value: 'someTextsomeText',
+    defaultValue: 'someTextsomeText',
     rowType: 'row',
   },
   {

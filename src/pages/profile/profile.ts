@@ -1,5 +1,9 @@
 import Block from '../../core/Block';
-import { profileProps, profileEditProps, profileEditPasswordProps } from '../../const';
+import {
+  profileProps,
+  profileEditProps,
+  profileEditPasswordProps,
+} from '../../const';
 
 interface IProfileProps {}
 
@@ -14,7 +18,7 @@ export class Profile extends Block<IProfileProps, Ref> {
       profileEditPassword: profileEditPasswordProps,
     });
   }
- 
+
   protected render(): string {
     return `
       <div class="profile">
@@ -30,12 +34,11 @@ export class Profile extends Block<IProfileProps, Ref> {
             {{#each profileInfo}}
               {{{ProfileRow 
                 key=@index 
-                ref=this.name
                 name=this.name 
                 type=this.type
                 className=this.className
                 label=this.label 
-                value=this.value 
+                defaultValue=this.defaultValue 
                 rowType=this.rowType 
                 rowClassName=this.rowClassName
                 readonly=this.readonly
@@ -44,8 +47,8 @@ export class Profile extends Block<IProfileProps, Ref> {
           {{/Form}}
         </div>
       </div>
-    `
+    `;
   }
 }
 
-//{{> Modal id="modal_avatar" title="Загрузите файл" button="Поменять" upload=true}}
+// {{> Modal id="modal_avatar" title="Загрузите файл" button="Поменять" upload=true}}

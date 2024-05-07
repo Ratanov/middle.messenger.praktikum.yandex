@@ -18,7 +18,7 @@ export default class Modal extends Block<IModalProps> {
           <div class="my-5 py-5 font-13 text-center">
             <!-- Для смены аватара -->
             {{#if upload}}
-              {{{ Link url="/" text="Выбрать файл на компьютере" }}}
+              {{{ Link label="Выбрать файл на компьютере" }}}
             {{/if}}
     
             {{#if img}}
@@ -27,12 +27,12 @@ export default class Modal extends Block<IModalProps> {
     
             <!-- Для добавления пользователя -->
             {{#ifEqual id "modal_add_user"}}
-              {{{ Input label="Логин" name="login" default=true }}}
+              {{{ Input label="Логин" name="login" }}}
             {{/ifEqual}}
     
             <!-- Для удаления пользователя -->
             {{#ifEqual id "modal_remove_user"}}
-              {{{ Input label="Логин" name="login" default=true }}}
+              {{{ Input label="Логин" name="login" }}}
             {{/ifEqual}}
         </div>
         {{#if button}}

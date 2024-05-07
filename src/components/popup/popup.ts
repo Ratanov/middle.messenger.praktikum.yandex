@@ -21,7 +21,7 @@ export default class Popup extends Block<IPopupProps> {
               <div class="popup__img">
                 <img src="{{img}}" alt="{{text}}" />
               </div>
-              {{{ Link url=url text=text className="ml-2" }}}
+              {{{ Link label=text className="ml-2" }}}
             </div>
           {{/each}}
         {{/ifEqual}}
@@ -32,7 +32,7 @@ export default class Popup extends Block<IPopupProps> {
               <div class="popup__img">
                 <img src="{{img}}" alt="{{text}}" />
               </div>
-              {{{ Link url=url text=text className="ml-2" }}}
+              {{{ Link label=text className="ml-2" }}}
             </div>
           {{/each}}
         {{/ifEqual}}

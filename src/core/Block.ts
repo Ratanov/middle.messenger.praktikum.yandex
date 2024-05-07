@@ -1,23 +1,69 @@
 import Handlebars from 'handlebars';
-import { nanoid } from 'nanoid';
 import EventBus from './EventBus';
+import { nanoid } from 'nanoid';
+import { TEvents } from './types';
+import { IChildren } from './registerComponent';
 
 export type RefType = {
   [key: string]: Element | Block<object>;
 };
 
-export interface BlockClass<P extends object, R extends RefType>
-  extends Function {
+export interface BlockClass<P extends object, R extends RefType> {
   new (props: P): Block<P, R>;
   componentName?: string;
 }
 
-interface IPropsBlock {
-  events?: Record<string, (event: Event) => void>;
-  [key: string]: any;
+type TContextAndStubs<Props extends object, R extends RefType> = {
+  __refs: RefType;
+  __children: IChildren<Props, R>[];
+} & Props;
+
+/**
+ * Проверка, являются ли два объекта равными, рекурсивно сравнивая их свойства.
+ * @param object1 - Первый объект для сравнения.
+ * @param object2 - Второй объект для сравнения.
+ * @returns `true`, если объекты равны, `false` в противном случае.
+ */
+export function isEqualObjects<T extends object>(
+  object1: T,
+  object2: T,
+): boolean {
+  const keys1 = Object.keys(object1) as Array<keyof T>;
+  const keys2 = Object.keys(object2) as Array<keyof T>;
+
+  if (keys1.length !== keys2.length) {
+    return false;
+  }
+
+  for (const key of keys1) {
+    const val1 = object1[key];
+    const val2 = object2[key];
+    const areObjects = isObject(val1) && isObject(val2);
+
+    if (
+      (areObjects && !isEqualObjects(val1 as object, val2 as object)) ||
+      (!areObjects && val1 !== val2)
+    ) {
+      return false;
+    }
+  }
+
+  return true;
 }
 
-class Block<Props extends object, Refs extends RefType = RefType> {
+/**
+ * Проверка, является ли значение объектом (не null и не примитив).
+ * @param object - Значение для проверки.
+ * @returns `true`, если значение является объектом, `false` в противном случае.
+ */
+function isObject(object: unknown): object is object {
+  return object != null && typeof object === 'object';
+}
+
+class Block<
+  Props extends object & { events?: Partial<TEvents> },
+  Refs extends RefType = RefType,
+> {
   static EVENTS = {
     INIT: 'init',
     FLOW_CDM: 'flow:component-did-mount',
@@ -27,18 +73,13 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   };
 
   public id = nanoid(6);
-
-  protected props: Props;
-
+  protected props: Props & { events?: Partial<TEvents> };
   protected refs: Refs = {} as Refs;
-
   private children: Block<object>[] = [];
-
-  private eventBus: () => EventBus;
-
+  private eventBus: () => EventBus<string>;
   private _element: HTMLElement | null = null;
 
-  constructor(props: Props = {} as Props) {
+  constructor(props: Props = {} as Props & { events?: Partial<TEvents> }) {
     const eventBus = new EventBus();
     this.props = this._makePropsProxy(props);
     this.eventBus = () => eventBus;
@@ -46,22 +87,29 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     eventBus.emit(Block.EVENTS.INIT);
   }
 
+  /**
+   * Добавление события к элементу на основе предложенных свойств.
+   *
+   */
   _addEvents() {
-    const { events = {} } = this.props as IPropsBlock;
+    const { events } = this.props;
+
+    if (!events) {
+      return;
+    }
 
     Object.keys(events).forEach((eventName) => {
-      this._element!.addEventListener(eventName, events[eventName]);
+      const callback = events[eventName as keyof TEvents] as EventListener;
+      this._element!.addEventListener(eventName, callback);
     });
   }
 
-  _removeEvents() {
-    const { events = {} } = this.props as IPropsBlock;
-
-    Object.keys(events).forEach((eventName) => {
-      this._element?.removeEventListener(eventName, events[eventName]);
-    });
-  }
-
+  /**
+   * Регистрация события на шине событий.
+   *
+   * @param {EventBus} eventBus - шина событий, на которой нужно зарегистрировать события.
+   * @return {void}
+   */
   _registerEvents(eventBus: EventBus) {
     eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
@@ -70,8 +118,12 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
+  /**
+   * Инициализирует блок.
+   */
   private _init() {
     this.init();
+
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
 
@@ -84,6 +136,9 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
   componentDidMount() {}
 
+  /**
+   * Отправка события componentDidMount и вызов метода componentDidMount для каждого дочернего компонента.
+   */
   public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
@@ -92,19 +147,26 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     );
   }
 
-  private _componentDidUpdate() {
-    if (this.componentDidUpdate()) {
+  private _componentDidUpdate(oldProps: Props, newProps: Props) {
+    if (this.componentDidUpdate(oldProps, newProps)) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
   }
 
-  protected componentDidUpdate() {
-    return true;
+  /**
+   * Метод жизненного цикла, вызываемый после выполнения обновления.
+   *
+   * @param {Props} oldProps - старые `props` до обновления.
+   * @param {Props} newProps - новые `props` после обновления.
+   * @return {boolean} флаг для указания, что старые `props` не равны новым `props`.
+   */
+  protected componentDidUpdate(oldProps: Props, newProps: Props) {
+    return !isEqualObjects(oldProps, newProps);
   }
 
   /**
-   * Хелпер, который проверяет, находится ли элемент в DOM дереве
-   * И есть нет, триггерит событие COMPONENT_WILL_UNMOUNT
+   * Helper для проверки присутствия элемента в DOM дереве.
+   * Если элемента нет, вызывается событие COMPONENT_WILL_UNMOUNT
    */
   _checkInDom() {
     const elementInDOM = document.body.contains(this._element);
@@ -121,9 +183,20 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     this.componentWillUnmount();
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    const { events } = this.props;
 
-  setProps = (nextProps: Partial<Props>) => {
+    if (!events) {
+      return;
+    }
+
+    Object.keys(events).forEach((eventName) => {
+      const callback = events[eventName as keyof TEvents] as EventListener;
+      this._element!.removeEventListener(eventName, callback);
+    });
+  }
+
+  setProps = (nextProps: Props) => {
     if (!nextProps) {
       return;
     }
@@ -140,8 +213,6 @@ class Block<Props extends object, Refs extends RefType = RefType> {
 
     const newElement = fragment.firstElementChild as HTMLElement;
 
-    this._removeEvents();
-
     if (this._element) {
       this._element.replaceWith(newElement);
     }
@@ -150,24 +221,33 @@ class Block<Props extends object, Refs extends RefType = RefType> {
     this._addEvents();
   }
 
-  private compile(template: string, context: any) {
-    const contextAndStubs = { ...context, __refs: this.refs };
-
-    Object.entries(this.children).forEach(([key, child]) => {
-      contextAndStubs[key] = `<div data-id="${child.id}"></div>`;
-    });
+  private compile(template: string, context: Props) {
+    const contextAndStubs: TContextAndStubs<Props, Refs> = {
+      ...context,
+      __refs: this.refs,
+      __children: [],
+    };
 
     const html = Handlebars.compile(template)(contextAndStubs);
+
     const temp = document.createElement('template');
 
     temp.innerHTML = html;
-    contextAndStubs.__children?.forEach(({ embed }: any) => {
-      embed(temp.content);
-    });
 
-    Object.values(this.children).forEach((child) => {
-      const stub = temp.content.querySelector(`[data-id="${child.id}"]`);
-      stub?.replaceWith(child.getContent()!);
+    const fragment: DocumentFragment = temp.content;
+
+    this.refs = Array.from(fragment.querySelectorAll('[ref]')).reduce(
+      (list, element) => {
+        const key = element.getAttribute('ref')!;
+        list[key] = element as HTMLElement;
+        element.removeAttribute('ref');
+        return list;
+      },
+      contextAndStubs.__refs,
+    ) as Refs;
+
+    contextAndStubs.__children?.forEach(({ embed }) => {
+      embed(temp.content);
     });
 
     return temp.content;
@@ -178,7 +258,6 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   getContent() {
-    // Хак, чтобы вызвать CDM только после добавления в DOM
     if (this.element?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
       setTimeout(() => {
         if (
@@ -193,8 +272,6 @@ class Block<Props extends object, Refs extends RefType = RefType> {
   }
 
   _makePropsProxy(props: Props) {
-    // Ещё один способ передачи this, но он больше не применяется с приходом ES6+
-    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this;
 
     return new Proxy(props, {
@@ -202,14 +279,12 @@ class Block<Props extends object, Refs extends RefType = RefType> {
         const value = target[prop as keyof Props];
         return typeof value === 'function' ? value.bind(target) : value;
       },
-      set(target, prop, value) {
-        const oldTarget = { ...target };
 
-        // eslint-disable-next-line no-param-reassign
+      set(target, prop, value) {
+        const oldTarget = JSON.parse(JSON.stringify(target)) as Props;
+
         target[prop as keyof Props] = value;
 
-        // Запускаем обновление компоненты
-        // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
         self.eventBus().emit(Block.EVENTS.FLOW_CDU, oldTarget, target);
         return true;
       },

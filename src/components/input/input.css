@@ -1,14 +1,13 @@
 .input {
-  /* padding: 10px; */
 }
-
 .input__container {
   display: flex;
-  height: 38px;
+  height: 38px; /* fix it */
   flex-direction: column;
   align-content: flex-end;
+  position: relative;
+  margin-top: 1.25rem; /* fix it */
 }
-
 .input__label {
   transform: translateY(-21px);
   color: var(--text-secondary-color);
@@ -19,39 +18,41 @@
     font-size 0.5s,
     transform 0.5s;
 }
-
 .input__element {
   border: none;
-  padding: 0%;
+  padding: 0;
   border-bottom: 1px solid var(--main-color);
   font-size: 13px;
   font-weight: 500;
   color: var(--text-color);
-  padding-bottom: 7px;
+  /* padding-bottom: 7px; */
 }
-
 .input__element:focus-visible {
   outline: none;
 }
-
-.input__text-error {
-  transform: translateY(-7px);
-  color: var(--error-color);
-  font-size: 8px;
-  font-weight: 400;
-  display: none;
-}
-
 .input__element:not(:placeholder-shown) + .input__label,
 .input__element:focus + .input__label {
   transform: translateY(-36px);
   font-size: 9px;
 }
-
-.input__error .input__text-error {
-  display: block;
-}
-
-.input__error .input__element {
+.input__error {
   color: var(--error-color);
+  font-size: 11px;
+  position: absolute;
+  bottom: 0;
+}
+/* Profile input */
+.profile__row .input__container {
+  height: unset;
+  margin-top: 0;
+  display: block;
+  float: right;
+}
+.profile__row .input__element {
+  text-align: right;
+  border-bottom: none;
+}
+.profile__row .input__error {
+  bottom: unset;
+  right: -20px;
 }

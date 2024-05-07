@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 
 interface IModalProps {}
 
-export default class ModalExample extends Block<IModalProps> {
+export class ModalExample extends Block<IModalProps> {
   constructor(props: IModalProps) {
     super(props);
   }
@@ -18,7 +18,7 @@ export default class ModalExample extends Block<IModalProps> {
         <li><a href="#modal_remove_user">Удалить пользователя</a></li>
       </ul>
       <br />
-      {{{ Link url="/" text="Назад" }}}
+      {{{ Link label="Назад" }}}
 
       {{{ Modal id="modal_avatar" title="Загрузите файл" button="Поменять" upload=true }}}
       {{{ Modal id="modal_avatar_uploaded" title="Файл загружен" button="Поменять" img=true }}}

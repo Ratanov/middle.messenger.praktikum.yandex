@@ -68,33 +68,5 @@ export class App extends Block<IAppProps, Ref> {
     `;
   }
 }
-// {{{ProfileRow 
-//     key=@index 
-//     ref=this.name
-//     name=this.name 
-//     type=this.type
-//     className=this.className
-//     label=this.label 
-//     value=this.value 
-//     rowType=this.rowType 
-//     rowClassName=this.rowClassName
-//     readonly=this.readonly
-//   }}}
-
-
-
-// <div class="app flex">
-//     <div class="app__left chats">
-//         {{> ChatList}}
-//     </div>
-//     <div class="app__border"></div>
-//     <div class="app__right messages">
-//         {{> MessageHeader}}
-//         {{> MessageList}}
-//         {{> MessageFooter}}
-//     </div>
-// </div>
-
-// MessageHeader
 // {{> Modal id="modal_add_user" title="Добавить пользователя" button="Добавить"}}
 // {{> Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить"}}
