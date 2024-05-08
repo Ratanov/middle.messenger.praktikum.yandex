@@ -31,7 +31,7 @@ export default class ProfileRow extends Block<object> {
       {{/ifEqual}}
         
       {{#ifEqual rowType "button"}}
-        {{{ Button type="primary" label=label className=className name="row_btn" }}}
+        {{{ Button name="row_btn" type="primary" className=className label=label }}}
       {{/ifEqual}}
     `;
   }

@@ -1,10 +1,10 @@
 import Block from '../../core/Block';
 
 interface IButtonProps {
-  name: string;
-  type: 'primary' | 'link' | 'icon';
+  name?: string;
+  type?: 'primary' | 'link' | 'icon';
   className?: string;
-  text: string;
+  label?: string;
   events?: {
     click: (event: Event) => void;
   };
@@ -23,14 +23,15 @@ export default class Button extends Block<IButtonProps> {
   }
 
   protected render(): string {
-    const { name, type, className, text } = this.props;
+    const { name, type, className, label } = this.props;
     return `
       <button 
+        ref="button"
         type="button"
-        name="${name}"
+        name="${name || ''}"
         class="${className ? `button button__${type} ${className}` : `button button__${type}`}"
       >
-        ${text || ''} 
+        ${label || ''} 
       </button>
   `;
   }

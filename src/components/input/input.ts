@@ -20,7 +20,7 @@ type Ref = {
 export default class Input extends Block<IInputProps, Ref> {
   constructor(props: IInputProps) {
     super(props);
-    
+
     if (props?.defaultValue) {
       this.refs.input.value = props.defaultValue;
     }
@@ -41,21 +41,21 @@ export default class Input extends Block<IInputProps, Ref> {
   protected render(): string {
     const { name, type, className, label, readonly } = this.props;
     return `
-        <div class="input w-100">
-          <label class="input__container">
-            <input
-              ref="input"
-              name="${name || ''}"
-              type="${type || 'text'}"
-              class="${className ? `input__element ${className}` : 'input__element'}"
-              ${readonly ? 'readonly' : ''}
-              placeholder=""
-              autocomplete="off"
-            />
-            ${label ? `<div class="input__label">${label}</div>` : ''}
-            <div class="input__error" ref="error"></div>
-          </label>
-        </div>
+      <div class="input w-100">
+        <label class="input__container">
+          <input
+            ref="input"
+            name="${name || ''}"
+            type="${type || 'text'}"
+            class="${className ? `input__element ${className}` : 'input__element'}"
+            ${readonly ? 'readonly' : ''}
+            placeholder=""
+            autocomplete="off"
+          />
+          ${label ? `<div class="input__label">${label}</div>` : ''}
+          <div class="input__error" ref="error"></div>
+        </label>
+      </div>
     `;
   }
 }

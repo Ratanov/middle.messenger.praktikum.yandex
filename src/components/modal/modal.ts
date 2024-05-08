@@ -20,23 +20,23 @@ export default class Modal extends Block<IModalProps> {
             {{#if upload}}
               {{{ Link label="Выбрать файл на компьютере" }}}
             {{/if}}
-    
+
             {{#if img}}
               загруженная картинка
             {{/if}}
-    
+
             <!-- Для добавления пользователя -->
             {{#ifEqual id "modal_add_user"}}
               {{{ Input label="Логин" name="login" }}}
             {{/ifEqual}}
-    
+
             <!-- Для удаления пользователя -->
             {{#ifEqual id "modal_remove_user"}}
               {{{ Input label="Логин" name="login" }}}
             {{/ifEqual}}
         </div>
         {{#if button}}
-          {{{ Button text=button type="primary" name="modal-btn" }}}
+          {{{ Button name="modal-btn" type="primary" label=button }}}
         {{/if}}
         {{#if bottom}}
           <div class="{{bottomClassName}}">{{bottom}}</div>

@@ -72,7 +72,7 @@ class Block<
     FLOW_RENDER: 'flow:render',
   };
 
-  public id = nanoid(6);
+  protected id: string;
   protected props: Props & { events?: Partial<TEvents> };
   protected refs: Refs = {} as Refs;
   private children: Block<object>[] = [];
@@ -81,6 +81,7 @@ class Block<
 
   constructor(props: Props = {} as Props & { events?: Partial<TEvents> }) {
     const eventBus = new EventBus();
+    this.id = nanoid(6);
     this.props = this._makePropsProxy(props);
     this.eventBus = () => eventBus;
     this._registerEvents(eventBus);

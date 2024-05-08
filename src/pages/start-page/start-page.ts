@@ -15,14 +15,14 @@ export class StartPage extends Block<object> {
 
   protected render(): string {
     return `
-        <nav>
-          <li>{{{ Link label="Авторизации" events=onSighIn }}}</li>
-          <li>{{{ Link label="Регистрация" events=onSignUp }}}</li>
-          <li>{{{ Link label="Главная" events=onApp }}}</li>
-          <li>{{{ Link label="Профиль" events=onProfile }}}</li>
-          <li>{{{ Link label="Ошибка 404" events=on404 }}}</li>
-          <li>{{{ Link label="Ошибка 500" events=on500 }}}</li>
-        </nav>
+      <nav>
+        <li>{{{ Link label="Авторизации" events=onSighIn }}}</li>
+        <li>{{{ Link label="Регистрация" events=onSignUp }}}</li>
+        <li>{{{ Link label="Главная" events=onApp }}}</li>
+        <li>{{{ Link label="Профиль" events=onProfile }}}</li>
+        <li>{{{ Link label="Ошибка 404" events=on404 }}}</li>
+        <li>{{{ Link label="Ошибка 500" events=on500 }}}</li>
+      </nav>
     `;
   }
 }

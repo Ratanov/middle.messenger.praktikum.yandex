@@ -23,8 +23,8 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
             {{{ Input ref="password" label="Пароль" name="password" type="password" }}}
           </div>
           <div>
-            {{{ Button text="Авторизоваться" type="primary" name="send" className="mt-5" }}}
-            {{{ Button text="Нет аккаунта?" type="link" name="sign_up" }}}
+            {{{ Button name="send" type="primary" className="mt-5" label="Авторизоваться" }}}
+            {{{ Button name="sign_up" type="link" label="Нет аккаунта?" }}}
           </div>
         {{/Form}}
       </div>

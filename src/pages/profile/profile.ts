@@ -31,7 +31,7 @@ export class Profile extends Block<IProfileProps, Ref> {
             <span class="profile__avatar--edit">Поменять аватар</span>
           </a>
           {{#> Form className="profile__list" }}
-            {{#each profileInfo}}
+            {{#each profileEdit}}
               {{{ProfileRow 
                 key=@index 
                 name=this.name 
