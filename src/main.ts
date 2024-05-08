@@ -19,7 +19,7 @@ Handlebars.registerHelper(
   },
 );
 
-document.addEventListener('DOMContentLoaded', () => navigate('sign-in'));
+document.addEventListener('DOMContentLoaded', () => navigate('start-page'));
 registerComponent('Form', Components.Form);
 registerComponent('Title', Components.Title);
 registerComponent('Input', Components.Input);

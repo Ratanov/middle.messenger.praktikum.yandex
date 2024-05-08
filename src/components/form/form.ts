@@ -2,9 +2,8 @@ import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 
 interface IFormProps {
-  ref?: string;
   className?: string;
-  events?: Partial<TEvents>;
+  // events?: Partial<TEvents>;
 }
 
 type Ref = {
@@ -21,7 +20,7 @@ export default class Form extends Block<IFormProps, Ref> {
   }
 
   protected render(): string {
-    const { ref, className } = this.props;
-    return `<form class="${className}" ref="${ref}"></form>`;
+    const { className } = this.props;
+    return `<form class="${className}" ref="form"></form>`;
   }
 }

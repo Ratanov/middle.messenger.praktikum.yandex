@@ -1,9 +1,16 @@
 import Block from '../../core/Block';
-import { Input } from '../../components';
+import { TEvents } from '../../core/types';
+import { Form, Input } from '../../components';
+import { navigate } from '../../core/navigate';
 
-interface ISignUpPageProps {}
+interface ISignUpPageProps {
+  events?: Partial<TEvents>;
+  onSubmit?: Partial<TEvents>;
+  onSignIn?: Partial<TEvents>;
+}
 
 type Ref = {
+  form: Form;
   email: Input;
   login: Input;
   first_name: Input;
@@ -18,10 +25,19 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
     super();
   }
 
+  public handlerSubmit(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    const data = this.refs.form.getFormData();
+    for (const [name, value] of data) {
+      console.log(name, ':', value);
+    }
+  }
+
   protected render(): string {
     return `
       <div class="container">
-        {{#> Form className="form-sign" }}
+        {{# Form ref="form" className="form-sign" }}
           {{{ Title text="Регистрация" className="title__h2 text-center" }}}
           <div>
             {{{ Input label="Почта" name="email" }}}
@@ -32,7 +48,7 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
             {{{ Input label="Пароль" name="password" type="password" }}}
             {{{ Input label="Пароль (ещё раз)" name="password_repeat" type="password" }}}
           </div>
-          {{{ Button name="send" className="button-primary mt-5" label="Зарегистрироваться" }}}
+          {{{ Button name="send" type="submit" className="button-primary mt-5" label="Зарегистрироваться" }}}
           {{{ Button name="sign_in" className="button-link" label="Войти" }}}
         {{/Form}}
       </div>
