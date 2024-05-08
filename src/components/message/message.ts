@@ -1,9 +1,6 @@
 import Block from '../../core/Block';
 
-interface IMessageProps {
-  // type: 'error' | 'success' | 'warning';
-  // text: string;
-}
+interface IMessageProps {}
 
 export default class Message extends Block<IMessageProps> {
   constructor(props: IMessageProps) {

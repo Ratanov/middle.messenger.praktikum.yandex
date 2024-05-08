@@ -19,8 +19,8 @@ Handlebars.registerHelper(
   },
 );
 
-document.addEventListener('DOMContentLoaded', () => navigate('start-page'));
-Handlebars.registerPartial('Form', Components.Form);
+document.addEventListener('DOMContentLoaded', () => navigate('sign-in'));
+registerComponent('Form', Components.Form);
 registerComponent('Title', Components.Title);
 registerComponent('Input', Components.Input);
 registerComponent('Button', Components.Button);

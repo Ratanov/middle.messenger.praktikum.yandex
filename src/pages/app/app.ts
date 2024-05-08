@@ -40,7 +40,7 @@ export class App extends Block<IAppProps, Ref> {
               <div class="circle"></div>
                 {{{ Title text="Вадим" className="ml-2" }}}
               </div>
-            {{{ Button name="popup_user" type="icon" className="button__menu popup-trigger" }}}
+            {{{ Button name="popup_user" className="button__icon button__menu popup-trigger" }}}
             {{{ Popup id="popup_user" position="bottom" }}}
           </div>
 
@@ -58,10 +58,10 @@ export class App extends Block<IAppProps, Ref> {
           </div>
           
           <div class="messages__footer mx-5">
-            {{{ Button name="attach" type="icon" className="button__attach popup-trigger" }}}
+            {{{ Button name="attach" className="button__icon button__attach popup-trigger" }}}
             {{{ Popup id="popup_attach" position="top" }}}
             <textarea class="messages__area w-100 mx-2" placeholder="Сообщение" rows="1" name="message" autofocus></textarea>
-            {{{ Button name="send" type="icon" className="button__send" }}}
+            {{{ Button name="send" className="button__icon button__send" }}}
           </div>
         </div>
       </div>

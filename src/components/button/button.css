@@ -10,13 +10,13 @@
   z-index: 1;
 }
 
-.button__primary {
+.button-primary {
   background-color: var(--main-color);
   color: #fff;
   font-size: 13px;
 }
 
-.button__link {
+.button-link {
   color: var(--main-color);
   font-size: 11px;
   text-align: center;

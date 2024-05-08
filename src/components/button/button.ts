@@ -1,25 +1,21 @@
 import Block from '../../core/Block';
+import { TEvents } from '../../core/types';
 
 interface IButtonProps {
   name?: string;
-  type?: 'primary' | 'link' | 'icon';
+  type?: 'button' | 'submit';
   className?: string;
   label?: string;
-  events?: {
-    click: (event: Event) => void;
-  };
-  onClick?: (event: Event) => void;
+  events?: Partial<TEvents>;
 }
 
-export default class Button extends Block<IButtonProps> {
+type Ref = {
+  button: HTMLButtonElement;
+}
+
+export default class Button extends Block<IButtonProps, Ref> {
   constructor(props: IButtonProps) {
     super(props);
-  }
-
-  protected init(): void {
-    this.props.events = {
-      click: this.props.onClick,
-    };
   }
 
   protected render(): string {
@@ -27,9 +23,9 @@ export default class Button extends Block<IButtonProps> {
     return `
       <button 
         ref="button"
-        type="button"
+        type="${type || 'button'}"
         name="${name || ''}"
-        class="${className ? `button button__${type} ${className}` : `button button__${type}`}"
+        class="${className ? `button ${className}` : 'button'}"
       >
         ${label || ''} 
       </button>

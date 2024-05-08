@@ -32,8 +32,8 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
             {{{ Input label="Пароль" name="password" type="password" }}}
             {{{ Input label="Пароль (ещё раз)" name="password_repeat" type="password" }}}
           </div>
-          {{{ Button name="send" type="primary" className="mt-5" label="Зарегистрироваться" }}}
-          {{{ Button name="sign_in" type="link" label="Войти" }}}
+          {{{ Button name="send" className="button-primary mt-5" label="Зарегистрироваться" }}}
+          {{{ Button name="sign_in" className="button-link" label="Войти" }}}
         {{/Form}}
       </div>
     `;

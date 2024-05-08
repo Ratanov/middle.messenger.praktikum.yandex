@@ -36,7 +36,7 @@ export default class Modal extends Block<IModalProps> {
             {{/ifEqual}}
         </div>
         {{#if button}}
-          {{{ Button name="modal-btn" type="primary" label=button }}}
+          {{{ Button name="modal-btn" className="button-primary" label=button }}}
         {{/if}}
         {{#if bottom}}
           <div class="{{bottomClassName}}">{{bottom}}</div>

@@ -120,7 +120,7 @@ export const profileEditProps: {
     name: 'send',
     label: 'Сохранить',
     rowType: 'button',
-    className: 'mt-5',
+    className: 'mt-5 button-primary',
   },
 ];
 

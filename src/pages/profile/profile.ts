@@ -23,7 +23,7 @@ export class Profile extends Block<IProfileProps, Ref> {
     return `
       <div class="profile">
         <div class="profile__left">
-          {{{ Button name="back_btn" type="icon" className="button__back" }}}
+          {{{ Button name="back_btn" className="button__icon button__back" }}}
         </div>
         <div class="profile__right">
           <a href="#" class="profile__avatar">

@@ -16,15 +16,15 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
   protected render(): string {
     return `
       <div class="container">
-        {{#> Form className="form-sign" }}
+        {{# Form className="form-sign" }}
           <div>
             {{{ Title text="Вход" className="title__h2 text-center"}}}
             {{{ Input ref="login" label="Логин" name="login" type="text" }}}
             {{{ Input ref="password" label="Пароль" name="password" type="password" }}}
           </div>
           <div>
-            {{{ Button name="send" type="primary" className="mt-5" label="Авторизоваться" }}}
-            {{{ Button name="sign_up" type="link" label="Нет аккаунта?" }}}
+            {{{ Button name="send" className="button-primary mt-5" label="Авторизоваться" }}}
+            {{{ Button name="sign_up" className="button-link" label="Нет аккаунта?" }}}
           </div>
         {{/Form}}
       </div>
