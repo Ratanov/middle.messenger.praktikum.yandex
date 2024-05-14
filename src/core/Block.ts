@@ -72,7 +72,7 @@ class Block<
     FLOW_RENDER: 'flow:render',
   };
 
-  protected id: string;
+  public id = nanoid(6);
   protected props: Props & { events?: Partial<TEvents> };
   protected refs: Refs = {} as Refs;
   private children: Block<object>[] = [];
