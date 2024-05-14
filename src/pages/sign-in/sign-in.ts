@@ -2,9 +2,11 @@ import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 import { Form, Input, Button } from '../../components';
 import { navigate } from '../../core/navigate';
+import { validations } from '../../core/utilities';
 
 interface ISignInPageProps {
   events?: Partial<TEvents>;
+  onLogin?: Partial<TEvents>;
   onSubmit?: Partial<TEvents>;
   onNoAccount?: Partial<TEvents>;
 }
@@ -20,6 +22,11 @@ type Ref = {
 export class SignIn extends Block<ISignInPageProps, Ref> {
   constructor() {
     super({
+      onLogin: {
+        blur: () => {
+          this.validationField('login', 'validationLogin');
+        },
+      },
       events: {
         submit: (e) => this.handleSubmit(e),
       },
@@ -29,14 +36,30 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
     });
   }
 
+  protected validationField(
+    field: keyof Ref,
+    validation: keyof typeof validations,
+  ) {
+    const input = this.refs[`${field}`];
+    if (input instanceof Input) {
+      return input.validation(validations[validation]);
+    }
+    return false;
+  }
+
   public handleSubmit(e: Event) {
     e.preventDefault();
     e.stopPropagation();
-    const data = this.refs.form.getFormData();
-    for (const [name, value] of data) {
-      console.log(name, ':', value);
+    const validationResult = this.validationField('login', 'validationLogin');
+    if (validationResult) {
+      const data = this.refs.form.getFormData();
+      for (const [name, value] of data) {
+        console.log(name, ':', value);
+      }
+      navigate('app');
+    } else {
+      console.error('validation error');
     }
-    navigate('app');
   }
 
   protected render(): string {
@@ -44,8 +67,8 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
       <div class="container">
         {{# Form ref="form" className="form-sign" }}
           <div>
-            {{{ Title text="Вход" className="title__h2 text-center"}}}
-            {{{ Input ref="login" label="Логин" name="login" type="text" }}}
+            {{{ Title text="Вход" className="title__h2 text-center" }}}
+            {{{ Input ref="login" label="Логин" name="login" type="text" events=onLogin }}}
             {{{ Input ref="password" label="Пароль" name="password" type="password" }}}
           </div>
           <div>

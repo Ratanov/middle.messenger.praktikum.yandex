@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 import { Form, Input } from '../../components';
 import { navigate } from '../../core/navigate';
-import { validations } from '../../utilities';
+import { validations } from '../../core/utilities';
 
 interface ISignUpPageProps {
   events?: Partial<TEvents>;

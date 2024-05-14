@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 import { Form, Input } from '../../components';
 import { navigate } from '../../core/navigate';
-import { validations } from '../../utilities';
+import { validations } from '../../core/utilities';
 
 interface IProfileEditProps {
   events?: Partial<TEvents>;
@@ -102,7 +102,7 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
 
   protected render(): string {
     return `
-      {{# Form ref="form" }}
+      {{# Form ref="form" className="profile__list" }}
         <div class="profile__row">
           {{{ Input 
             ref="email"

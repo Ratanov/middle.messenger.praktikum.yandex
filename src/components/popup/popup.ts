@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { popupUserProps, popupAttachProps } from '../../utilities/const';
+import { popupUserProps, popupAttachProps } from '../../core/utilities/const';
 
 interface IPopupProps {}
 

@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
-import { constants } from '../../utilities';
+import { constants } from '../../core/utilities';
 import { navigate } from '../../core/navigate';
 
 interface IProfileProps {
@@ -8,10 +8,8 @@ interface IProfileProps {
   onChangeData?: Partial<TEvents>;
   onChangePassword?: Partial<TEvents>;
   onExit?: Partial<TEvents>;
-  content?: 'profile' | 'editProfile' | 'editPassword';
+  content?: 'profile' | 'profileEdit' | 'profileEditPassword';
   profileInfo?: {};
-  profileEdit?: {};
-  profileEditPassword?: {};
 }
 
 type Ref = {};
@@ -29,14 +27,14 @@ export class Profile extends Block<IProfileProps, Ref> {
       onChangeData: {
         click: () => {
           this.setProps({
-            content: 'editProfile',
+            content: 'profileEdit',
           });
         },
       },
       onChangePassword: {
         click: () => {
           this.setProps({
-            content: 'editPassword',
+            content: 'profileEditPassword',
           });
         },
       },
@@ -61,34 +59,35 @@ export class Profile extends Block<IProfileProps, Ref> {
             <span class="profile__avatar--edit">Поменять аватар</span>
           </a>
           {{{ Modal id="modal_avatar" title="Загрузите файл" button="Поменять" upload=true }}}
-          {{# Form className="profile__list" }}
-            ${
-              content === 'profile'
-                ? `
-                  {{#each profileInfo }}
-                    {{{ProfileRow 
-                      name=this.name 
-                      type=this.type
-                      label=this.label 
-                      defaultValue=this.defaultValue 
-                      readonly=this.readonly
-                    }}}
-                  {{/each}}
-                  <div class="profile__row mt-5 pt-5">
-                    {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
-                  </div>
-                  <div class="profile__row">
-                    {{{ Link label="Изменить пароль" name="change_password" events=onChangePassword }}}
-                  </div>
-                  <div class="profile__row">
-                    {{{ Link label="Выйти" className="danger" name="exit_btn" events=onExit }}}
-                  </div>
-                `
-                : content === 'editProfile'
-                  ? `{{{ ProfileEdit }}}`
-                  : `{{{ ProfileEditPassword }}}`
-            }
-          {{/Form}}
+
+            ${ content === 'profile' ? `
+              {{# Form className="profile__list" }}
+                {{#each profileInfo }}
+                  {{{ProfileRow 
+                    name=this.name 
+                    type=this.type
+                    label=this.label 
+                    defaultValue=this.defaultValue 
+                    readonly=this.readonly
+                  }}}
+                {{/each}}
+                <div class="profile__row mt-5 pt-5">
+                  {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
+                </div>
+                <div class="profile__row">
+                  {{{ Link label="Изменить пароль" name="change_password" events=onChangePassword }}}
+                </div>
+                <div class="profile__row">
+                  {{{ Link label="Выйти" className="danger" name="exit_btn" events=onExit }}}
+                </div>
+              {{/Form}}
+            ` : ''}
+            
+            ${ content === 'profileEdit' ? `{{{ ProfileEdit }}}` : '' }
+
+            ${ content === 'profileEditPassword' ? `{{{ ProfileEditPassword }}}` : '' }
+
+          
         </div>
       </div>
     `;

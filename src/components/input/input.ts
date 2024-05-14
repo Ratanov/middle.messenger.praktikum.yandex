@@ -1,6 +1,7 @@
 import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
-import { TValidationResult } from '../../utilities/validationType';
+import { TValidationResult } from '../../core/utilities/validationType';
+import { validations } from '../../core/utilities';
 
 interface IInputProps {
   name?: string;
@@ -53,6 +54,16 @@ export default class Input extends Block<IInputProps, Ref> {
     return result.result;
   }
 
+  protected validationField(
+    field: keyof Ref,
+    validation: keyof typeof validations,
+  ) {
+    const input = this.refs[`${field}`];
+    if (input instanceof Input) {
+      return this.validation(validations[validation]);
+    }
+    return false;
+  }
 
   public setError(error: string) {
     this.refs.error.innerText = error;

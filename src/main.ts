@@ -27,6 +27,7 @@ registerComponent('Button', Components.Button);
 registerComponent('Link', Components.Link);
 registerComponent('ProfileRow', Components.ProfileRow);
 registerComponent('ProfileEdit', Components.ProfileEdit);
+registerComponent('ProfileEditPassword', Components.ProfileEditPassword);
 registerComponent('Message', Components.Message);
 registerComponent('Chat', Components.Chat);
 registerComponent('Popup', Components.Popup);

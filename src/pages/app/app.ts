@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
-import { chatListProps, messageListProps } from '../../utilities/const';
+import { chatListProps, messageListProps } from '../../core/utilities/const';
 import { navigate } from '../../core/navigate';
 
 interface IAppProps {

@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 import { Form, Input } from '..';
 import { navigate } from '../../core/navigate';
-import { validations } from '../../utilities';
+import { validations } from '../../core/utilities';
 
 interface IProfileEditPasswordProps {
   events?: Partial<TEvents>;
@@ -18,10 +18,7 @@ type Ref = {
   password_repeat: Input;
 };
 
-export default class ProfileEditPassword extends Block<
-  IProfileEditPasswordProps,
-  Ref
-> {
+export default class ProfileEditPassword extends Block<IProfileEditPasswordProps, Ref> {
   constructor() {
     super({
       onPassword: {
@@ -88,7 +85,7 @@ export default class ProfileEditPassword extends Block<
 
   protected render(): string {
     return `
-      {{# Form ref="form" }}
+      {{# Form ref="form" className="profile__list" }}
         <div class="profile__row">
           {{{ Input 
             ref="old_password"
