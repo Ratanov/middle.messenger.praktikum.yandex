@@ -76,21 +76,21 @@
   height: 34px;
 }
 .button__menu {
-  background: url(/assets/svg/three-dots.svg) no-repeat center;
+  background: url('/assets/svg/three-dots.svg') no-repeat center;
   border-radius: 50%;
 }
 .button__menu:hover {
   background:
-    url(/assets/svg/three-dots.svg) no-repeat center,
+    url('/assets/svg/three-dots.svg') no-repeat center,
     var(--bg-second-color);
 }
 
 .button__attach {
-  background: url(/assets/svg/attach.svg) no-repeat center;
+  background: url('/assets/svg/attach.svg') no-repeat center;
 }
 .button__send {
-  background: url(/assets/svg/send.svg) no-repeat center;
+  background: url('/assets/svg/send.svg') no-repeat center;
 }
 .button__back {
-  background: url(/assets/svg/back.svg) no-repeat center;
+  background: url('/assets/svg/back.svg') no-repeat center;
 }

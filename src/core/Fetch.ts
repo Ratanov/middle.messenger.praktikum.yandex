@@ -5,6 +5,7 @@ const METHODS = {
   DELETE: 'DELETE',
 };
 
+// eslint-disable-next-line
 function queryStringify(data: { [key: string]: any }) {
   if (typeof data !== 'object') {
     throw new Error('Data must be object');

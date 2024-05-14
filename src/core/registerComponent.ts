@@ -1,6 +1,7 @@
 import Handlebars, { HelperOptions } from 'handlebars';
 import Block, { RefType } from './Block';
 
+// eslint-disable-next-line
 interface BlockConstructable<Props extends object, R extends {}> {
   new (props: Props): Block<Props, R>;
 }
@@ -10,6 +11,7 @@ export interface IChildren<Props extends object, R extends RefType> {
   embed: (fragment: DocumentFragment) => void;
 }
 
+// eslint-disable-next-line
 export function registerComponent<Props extends object, R extends {}>(
   name: string,
   Component: BlockConstructable<Props, R>,

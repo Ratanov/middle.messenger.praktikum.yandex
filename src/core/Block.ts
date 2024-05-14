@@ -273,6 +273,7 @@ class Block<
   }
 
   _makePropsProxy(props: Props) {
+    // eslint-disable-next-line
     const self = this;
 
     return new Proxy(props, {

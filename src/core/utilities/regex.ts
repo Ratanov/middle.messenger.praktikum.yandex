@@ -1,4 +1,5 @@
 export const regex = {
+  // eslint-disable-next-line
   isValidEmail: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
   isOnlyNumbers: /^\d+$/,
   hasSpaces: /\s/,

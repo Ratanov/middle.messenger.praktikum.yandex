@@ -13,7 +13,7 @@
   align-items: center;
   justify-content: center;
 }
-.profile__left:after {
+.profile__left::after {
   position: absolute;
   content: '';
   border-right: 1px solid var(--border-color);
@@ -73,7 +73,7 @@
   padding-bottom: 0.75rem;
   position: relative;
 }
-.profile__row:after {
+.profile__row::after {
   position: absolute;
   content: '';
   border-bottom: 1px solid var(--border-color);

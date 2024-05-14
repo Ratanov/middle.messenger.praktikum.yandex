@@ -1,9 +1,7 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
 
 interface IFormProps {
   className?: string;
-  // events?: Partial<TEvents>;
 }
 
 type Ref = {

@@ -6,10 +6,13 @@ import { navigate } from '../../core/navigate';
 interface IAppProps {
   events?: Partial<TEvents>;
   onProfile?: Partial<TEvents>;
+  // eslint-disable-next-line
   chatList: {};
+  // eslint-disable-next-line
   messageList: {};
 }
 
+// eslint-disable-next-line
 type Ref = {};
 
 export class App extends Block<IAppProps, Ref> {

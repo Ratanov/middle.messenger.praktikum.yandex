@@ -40,7 +40,7 @@
   padding: 8px 0;
   position: relative;
 }
-.messages__header:after {
+.messages__header::after {
   position: absolute;
   content: '';
   border-bottom: 1px solid var(--border-color);

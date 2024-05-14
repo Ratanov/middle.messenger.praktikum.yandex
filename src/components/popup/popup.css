@@ -8,11 +8,11 @@
   z-index: 7000;
 }
 .popup--top {
-  bottom: 90%; /*fix need 100%*/
+  bottom: 90%;
   left: 0;
 }
 .popup--bottom {
-  top: 80%; /*fix need 100%*/
+  top: 80%;
   right: 0;
 }
 .popup__img {
@@ -24,7 +24,7 @@
   justify-content: center;
 }
 #popup_user .popup__img {
-  border: 1px solid var(--main-color); /* fix */
+  border: 1px solid var(--main-color);
 }
 .popup a {
   color: var(--text-color);
@@ -32,7 +32,7 @@
   text-decoration: none;
 }
 /* Для триггера всплывающего окна */
-.popup-trigger:hover + .popup,
-.popup:hover {
+.popup:hover,
+.popup-trigger:hover + .popup {
   display: block;
 }

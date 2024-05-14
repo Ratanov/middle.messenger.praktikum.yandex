@@ -9,9 +9,11 @@ interface IProfileProps {
   onChangePassword?: Partial<TEvents>;
   onExit?: Partial<TEvents>;
   content?: 'profile' | 'profileEdit' | 'profileEditPassword';
+  // eslint-disable-next-line
   profileInfo?: {};
 }
 
+// eslint-disable-next-line
 type Ref = {};
 
 export class Profile extends Block<IProfileProps, Ref> {
@@ -82,12 +84,8 @@ export class Profile extends Block<IProfileProps, Ref> {
                 </div>
               {{/Form}}
             ` : ''}
-            
             ${ content === 'profileEdit' ? `{{{ ProfileEdit }}}` : '' }
-
             ${ content === 'profileEditPassword' ? `{{{ ProfileEditPassword }}}` : '' }
-
-          
         </div>
       </div>
     `;
