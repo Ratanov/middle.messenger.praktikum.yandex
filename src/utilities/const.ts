@@ -1,164 +1,49 @@
+
 import cat1 from '/assets/01.jpg';
 import cat2 from '/assets/02.jpg';
 import cat3 from '/assets/03.jpg';
 
-export const profileProps: {
+export const profileInfoProps: {
   name: string;
   label: string;
   defaultValue?: string;
-  rowType: string;
-  className?: string;
-  rowClassName?: string;
   readonly?: boolean;
 }[] = [
   {
     name: 'email',
     label: 'Почта',
     defaultValue: 'pochta@yandex.ru',
-    rowType: 'row',
     readonly: true,
   },
   {
     name: 'login',
     label: 'Логин',
     defaultValue: 'ratanovoleg',
-    rowType: 'row',
     readonly: true,
   },
   {
     name: 'first_name',
     label: 'Имя',
     defaultValue: 'Олег',
-    rowType: 'row',
     readonly: true,
   },
   {
     name: 'second_name',
     label: 'Фамилия',
     defaultValue: 'Ратанов',
-    rowType: 'row',
     readonly: true,
   },
   {
     name: 'display_name',
     label: 'Имя в чате',
     defaultValue: 'Олег',
-    rowType: 'row',
     readonly: true,
   },
   {
     name: 'phone',
     label: 'Телефон',
     defaultValue: '+7 960 087 87 08',
-    rowType: 'row',
     readonly: true,
-  },
-  {
-    name: 'change_data',
-    label: 'Изменить данные',
-    rowType: 'link',
-    rowClassName: 'mt-5 pt-5',
-  },
-  {
-    name: 'change_password',
-    label: 'Изменить пароль',
-    rowType: 'link',
-  },
-  {
-    name: 'exit_btn',
-    label: 'Выйти',
-    rowType: 'link',
-    className: 'danger',
-  },
-];
-
-export const profileEditProps: {
-  name: string;
-  label: string;
-  defaultValue?: string;
-  rowType: string;
-  className?: string;
-  rowClassName?: string;
-}[] = [
-  {
-    name: 'email',
-    label: 'Почта',
-    defaultValue: 'pochta@yandex.ru',
-    rowType: 'row',
-  },
-  {
-    name: 'login',
-    label: 'Логин',
-    defaultValue: 'ratanovoleg',
-    rowType: 'row',
-  },
-  {
-    name: 'first_name',
-    label: 'Имя',
-    defaultValue: 'Олег',
-    rowType: 'row',
-  },
-  {
-    name: 'second_name',
-    label: 'Фамилия',
-    defaultValue: 'Ратанов',
-    rowType: 'row',
-  },
-  {
-    name: 'display_name',
-    label: 'Имя в чате',
-    defaultValue: 'Олег',
-    rowType: 'row',
-  },
-  {
-    name: 'phone',
-    label: 'Телефон',
-    defaultValue: '+7 960 087 87 08',
-    rowType: 'row',
-  },
-  {
-    name: 'send',
-    label: 'Сохранить',
-    rowType: 'button',
-    className: 'mt-5 button-primary',
-  },
-];
-
-export const profileEditPasswordProps: {
-  name: string;
-  type?: string;
-  label: string;
-  defaultValue?: string;
-  rowType: string;
-  className?: string;
-  rowClassName?: string;
-}[] = [
-  {
-    name: 'old_password',
-    type: 'password',
-    label: 'Старый пароль',
-    defaultValue: 'someText',
-    rowType: 'row',
-  },
-  {
-    name: 'new_password',
-    type: 'password',
-    label: 'Новый пароль',
-    defaultValue: 'someTextsomeText',
-    rowType: 'row',
-  },
-  {
-    name: 'repeat_new_password',
-    type: 'password',
-    label: 'Повторите новый пароль',
-    defaultValue: 'someTextsomeText',
-    rowType: 'row',
-  },
-  {
-    name: 'send',
-    label: 'Сохранить',
-    rowType: 'button',
-    className: 'mt-5',
   },
 ];
 

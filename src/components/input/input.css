@@ -1,5 +1,4 @@
-.input {
-}
+.input {}
 .input__container {
   display: flex;
   height: 38px; /* fix it */
@@ -25,7 +24,6 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--text-color);
-  /* padding-bottom: 7px; */
 }
 .input__element:focus-visible {
   outline: none;
@@ -37,22 +35,28 @@
 }
 .input__error {
   color: var(--error-color);
-  font-size: 11px;
+  font-size: 10px;
   position: absolute;
-  bottom: 0;
+  bottom: 3px;
 }
 /* Profile input */
 .profile__row .input__container {
   height: unset;
   margin-top: 0;
-  display: block;
-  float: right;
+  flex-direction: row-reverse;
+  justify-content: space-between;
 }
 .profile__row .input__element {
+  width: 100%;
   text-align: right;
   border-bottom: none;
 }
 .profile__row .input__error {
-  bottom: unset;
-  right: -20px;
+  bottom: -15px;
+}
+.profile__row .input__element:not(:placeholder-shown) + .input__label, 
+.profile__row .input__element:focus + .input__label {
+  width: 100%;
+  transform: unset;
+  font-size: unset;
 }

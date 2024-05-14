@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { popupUserProps, popupAttachProps } from '../../const';
+import { popupUserProps, popupAttachProps } from '../../utilities/const';
 
 interface IPopupProps {}
 
@@ -21,7 +21,7 @@ export default class Popup extends Block<IPopupProps> {
               <div class="popup__img">
                 <img src="{{img}}" alt="{{text}}" />
               </div>
-              {{{ Link label=text className="ml-2" }}}
+              {{{ Link url=url label=text className="ml-2" }}}
             </div>
           {{/each}}
         {{/ifEqual}}
@@ -32,7 +32,7 @@ export default class Popup extends Block<IPopupProps> {
               <div class="popup__img">
                 <img src="{{img}}" alt="{{text}}" />
               </div>
-              {{{ Link label=text className="ml-2" }}}
+              {{{ Link url=url label=text className="ml-2" }}}
             </div>
           {{/each}}
         {{/ifEqual}}

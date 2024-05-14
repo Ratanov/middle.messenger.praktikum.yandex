@@ -3,8 +3,8 @@ import Block from '../../core/Block';
 interface IModalProps {}
 
 export class ModalExample extends Block<IModalProps> {
-  constructor(props: IModalProps) {
-    super(props);
+  constructor() {
+    super();
   }
 
   protected render(): string {

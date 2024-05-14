@@ -2,6 +2,7 @@ import Block from '../../core/Block';
 
 interface ILinkProps {
   name?: string;
+  url?: string;
   label?: string;
   className?: string;
 }
@@ -16,11 +17,12 @@ export default class Link extends Block<ILinkProps, Ref> {
   }
 
   protected render(): string {
-    const { name, label, className } = this.props;
+    const { name, url, label, className } = this.props;
     return `
       <a
         ref="link"
         ${name ? `name="${name}"` : ''}
+        href="${url || '#'}"
         class="${className ? `link ${className}` : 'link'}"
         ${label ? `title="${label}"` : ''}
       >

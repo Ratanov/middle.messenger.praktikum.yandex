@@ -36,7 +36,7 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
     for (const [name, value] of data) {
       console.log(name, ':', value);
     }
-    // navigate('app');
+    navigate('app');
   }
 
   protected render(): string {

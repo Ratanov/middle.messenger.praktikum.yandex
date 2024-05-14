@@ -65,3 +65,39 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+/* Profile row */
+.profile__row {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.25rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+.profile__row:after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.profile__text {
+  color: var(--text-secondary-color);
+  border: none;
+  text-align: right;
+}
+.profile__edit {
+  margin-top: 2rem;
+}
+.profile .link {
+  font-size: 13px;
+  text-decoration: none;
+}
+.profile__pswd {
+  border: none;
+  text-align: right;
+}
+.profile__pswd:focus {
+  outline: none;
+}

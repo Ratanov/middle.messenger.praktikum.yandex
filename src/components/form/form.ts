@@ -21,6 +21,6 @@ export default class Form extends Block<IFormProps, Ref> {
 
   protected render(): string {
     const { className } = this.props;
-    return `<form class="${className}" ref="form"></form>`;
+    return `<form class="${className ? `form ${className}` : 'form'}" ref="form"></form>`;
   }
 }

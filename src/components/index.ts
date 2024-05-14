@@ -8,3 +8,5 @@ export { ProfileRow } from './profile-row';
 export { Modal } from './modal';
 export { Popup } from './popup';
 export { Form } from './form';
+export { ProfileEdit } from './profile-edit';
+export { ProfileEditPassword } from './profile-edit-password';

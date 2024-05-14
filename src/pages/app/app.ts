@@ -1,16 +1,27 @@
 import Block from '../../core/Block';
-import { chatListProps, messageListProps } from '../../const';
+import { TEvents } from '../../core/types';
+import { chatListProps, messageListProps } from '../../utilities/const';
+import { navigate } from '../../core/navigate';
 
-interface IAppProps {}
+interface IAppProps {
+  events?: Partial<TEvents>;
+  onProfile?: Partial<TEvents>;
+  chatList: {};
+  messageList: {};
+}
 
 type Ref = {};
 
 export class App extends Block<IAppProps, Ref> {
-  constructor(props: IAppProps) {
+  constructor() {
     super({
-      ...props,
       chatList: chatListProps,
       messageList: messageListProps,
+      onProfile: {
+        click: () => {
+          navigate('profile');
+        },
+      },
     });
   }
 
@@ -18,6 +29,10 @@ export class App extends Block<IAppProps, Ref> {
     return `
       <div class="app flex">
         <div class="app__left chats">
+          {{{ Button name="profile" className="app__button-profile" label="Профиль ˃" events=onProfile }}}
+          <div class="mx-2">
+            <textarea class="search__area w-100" placeholder="Поиск" rows="1" name="search"></textarea>
+          </div>
           <ul>
             {{#each chatList}}
               {{{ Chat 
@@ -64,9 +79,10 @@ export class App extends Block<IAppProps, Ref> {
             {{{ Button name="send" className="button__icon button__send" }}}
           </div>
         </div>
+
+      {{{ Modal id="modal_add_user" title="Добавить пользователя" button="Добавить" }}}
+      {{{ Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить" }}}
       </div>
     `;
   }
 }
-// {{> Modal id="modal_add_user" title="Добавить пользователя" button="Добавить"}}
-// {{> Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить"}}
