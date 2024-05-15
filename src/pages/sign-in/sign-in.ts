@@ -23,7 +23,7 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
   constructor() {
     super({
       onLogin: {
-        blur: () => {
+        focusout: () => {
           this.validationField('login', 'validationLogin');
         },
       },

@@ -21,16 +21,33 @@ type Ref = {
 
 export default class Input extends Block<IInputProps, Ref> {
   constructor(props: IInputProps) {
-    super(props);
+    super({ ...props,
+      // Для ревьюера. Решил использовать focusout вместо blur,
+      // потому что это focusout работает. Почему не работает blur
+      // так и не смог понять. Лучше конечно использовать blur, ведь
+      // focusout всплывает вверх по иерархии DOM. Ниже пример:
+      //
+      // events: {
+      //   blur: (e) => {
+      //     console.log('blur', e); // НЕ работает
+      //   },
+      //   focusout: (e) => {
+      //     console.log('focusout', e); // прекрасно работает
+      //   }
+      // }
+     });
+
+    // Код ниже был использован, чтобы все таки заработало событие blur
+    // if (props?.events?.blur) {
+    //   this.refs.input.addEventListener('blur', () => {
+    //     props?.events?.blur?.(new Event('blur'));
+    //   });
+    // }
+
+    // На данный момент все события blur в копонентах заменил на focusout
 
     if (props?.defaultValue) {
       this.refs.input.value = props.defaultValue;
-    }
-
-    if (props?.events?.blur) {
-      this.refs.input.addEventListener('blur', () => {
-        props?.events?.blur?.(new Event('blur'));
-      });
     }
   }
 
@@ -48,7 +65,7 @@ export default class Input extends Block<IInputProps, Ref> {
       this.setError('');
       return false;
     }
-  
+
     const result = callback(value);
     this.setError(result.result ? '' : result.message);
     return result.result;

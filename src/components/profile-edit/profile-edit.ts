@@ -28,32 +28,32 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
   constructor() {
     super({
       onEmail: {
-        blur: () => {
+        focusout: () => {
           this.validationField('email', 'validationEmail');
         },
       },
       onLogin: {
-        blur: () => {
+        focusout: () => {
           this.validationField('login', 'validationLogin');
         },
       },
       onFirstName: {
-        blur: () => {
+        focusout: () => {
           this.validationField('first_name', 'validationName');
         },
       },
       onSecondName: {
-        blur: () => {
+        focusout: () => {
           this.validationField('second_name', 'validationName');
         },
       },
       onDisplayName: {
-        blur: () => {
+        focusout: () => {
           this.validationField('display_name', 'validationName');
         },
       },
       onPhone: {
-        blur: () => {
+        focusout: () => {
           this.validationField('phone', 'validationPhone');
         },
       },

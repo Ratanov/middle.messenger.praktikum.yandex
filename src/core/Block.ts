@@ -93,11 +93,7 @@ class Block<
    *
    */
   _addEvents() {
-    const { events } = this.props;
-
-    if (!events) {
-      return;
-    }
+    const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
       const callback = events[eventName as keyof TEvents] as EventListener;

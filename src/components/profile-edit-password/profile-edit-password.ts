@@ -22,12 +22,12 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
   constructor() {
     super({
       onPassword: {
-        blur: () => {
+        focusout: () => {
           this.validationField('password', 'validationPassword');
         },
       },
       onPasswordRepeat: {
-        blur: () => {
+        focusout: () => {
           this.validationRepeatPassword();
         },
       },

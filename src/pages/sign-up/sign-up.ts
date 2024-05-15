@@ -31,37 +31,37 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
   constructor() {
     super({
       onEmail: {
-        blur: () => {
+        focusout: () => {
           this.validationField('email', 'validationEmail');
         },
       },
       onLogin: {
-        blur: () => {
+        focusout: () => {
           this.validationField('login', 'validationLogin');
         },
       },
       onFirstName: {
-        blur: () => {
+        focusout: () => {
           this.validationField('first_name', 'validationName');
         },
       },
       onSecondName: {
-        blur: () => {
+        focusout: () => {
           this.validationField('second_name', 'validationName');
         },
       },
       onPhone: {
-        blur: () => {
+        focusout: () => {
           this.validationField('phone', 'validationPhone');
         },
       },
       onPassword: {
-        blur: () => {
+        focusout: () => {
           this.validationField('password', 'validationPassword');
         },
       },
       onPasswordRepeat: {
-        blur: () => {
+        focusout: () => {
           this.validationRepeatPassword();
         },
       },
