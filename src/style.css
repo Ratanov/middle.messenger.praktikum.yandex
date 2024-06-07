@@ -29,6 +29,9 @@ body {
 .w-100 {
   width: 100% !important;
 }
+.m-2 {
+  margin: 0.5rem !important;
+}
 .mt-5 {
   margin-top: 1.25rem !important;
 }
@@ -44,20 +47,20 @@ body {
 .mt-1 {
   margin-top: 0.25rem !important;
 }
-.ml-1 {
-  margin-left: 0.25rem !important;
-}
-.ml-2 {
-  margin-left: 0.5rem !important;
-}
-.ml-3 {
-  margin-left: 0.75rem !important;
+.ml-5 {
+  margin-left: 1.25rem !important;
 }
 .ml-4 {
   margin-left: 1rem !important;
 }
-.ml-5 {
-  margin-left: 1.25rem !important;
+.ml-3 {
+  margin-left: 0.75rem !important;
+}
+.ml-2 {
+  margin-left: 0.5rem !important;
+}
+.ml-1 {
+  margin-left: 0.25rem !important;
 }
 .mb-5 {
   margin-bottom: 1.25rem !important;

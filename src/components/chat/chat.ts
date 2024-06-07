@@ -5,6 +5,8 @@ import WebSocketTransport from '../../core/webSocket';
 
 export interface IChatProps {
   chatConfig?: IChat.GETChatsResponse;
+  isChatOpen?: boolean;
+  updateChatList?: () => void;
   messages?: Array<IChat.WSMessage>;
 }
 

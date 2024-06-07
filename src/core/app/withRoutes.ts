@@ -12,7 +12,7 @@ export const routes = {
   messenger: { content: Messenger, route: '/messenger' },
   notFound: { content: NotFound, route: '/not-found' },
   serverError: { content: ServerError, route: '/server-error' },
-  profile: { content: Profile, route: '/profile' },
+  profile: { content: Profile, route: '/settings' },
 };
 
 export const initialRoutes = () => {

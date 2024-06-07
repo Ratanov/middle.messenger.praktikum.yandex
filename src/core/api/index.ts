@@ -41,7 +41,6 @@ export const api = {
     const response = await userApi.changeAvatar(data);
     return errorHandler<IUser.InfoResponse>(response);
   },
-
   getChats: async (data?: IChat.GETChatUsersRequest): Promise<IChat.GETChatsResponse[]> => {
     const response = await chatApi.getChats(data);
     return errorHandler<IChat.GETChatsResponse[]>(response);
@@ -50,37 +49,30 @@ export const api = {
     const response = await chatApi.createChat(data);
     return errorHandler<IChat.CreateChatResponse>(response);
   },
-
   changeChatAvatar: async (data: FormData): Promise<IChat.GETChatsResponse> => {
     const response = await chatApi.changeAvatar(data);
     return errorHandler<IChat.GETChatsResponse>(response);
   },
-
   deleteChat: async (data: { chatId: number }): Promise<void> => {
     const response = await chatApi.deleteChat(data);
     return errorHandler<void>(response);
   },
-
   searchUser: async (data: IChat.GETChatUsersRequest): Promise<IUser.InfoResponse[]> => {
     const response = await chatApi.searchChatUsers(data);
     return errorHandler<IUser.InfoResponse[]>(response);
   },
-
   addUserToChat: async (data: IChat.AddUserToChatRequest): Promise<void> => {
     const response = await chatApi.addUserToChat(data);
     return errorHandler<void>(response);
   },
-
   getChatUsers: async (data: IChat.GetChatUsersRequest): Promise<IChat.GetChatUsersResponse[]> => {
     const response = await chatApi.getChatUsers(data);
     return errorHandler<IChat.GetChatUsersResponse[]>(response);
   },
-
   deleteChatUsers: async (data: IChat.DeleteChatUsers): Promise<void> => {
     const response = await chatApi.deleteChatUsers(data);
     return errorHandler<void>(response);
   },
-
   getToken: async (data: IChat.GetChatTokenRequest): Promise<IChat.GetChatTokenResponse> => {
     const response = await chatApi.getChatToken(data);
     return errorHandler<IChat.GetChatTokenResponse>(response);

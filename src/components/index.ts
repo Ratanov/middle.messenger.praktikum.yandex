@@ -1,7 +1,7 @@
 export { Button } from './button';
 export { Input } from './input';
-export { ChatListItem } from './chat-list-item';
 export { ChatList } from './chat-list';
+export { ChatListItem } from './chat-list-item';
 export { Chat } from './chat';
 export { Title } from './title';
 export { Link } from './link';

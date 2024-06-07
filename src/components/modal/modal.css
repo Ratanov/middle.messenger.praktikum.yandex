@@ -9,7 +9,6 @@
   z-index: 7000;
 }
 .modal {
-  /* display: none; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -21,17 +20,10 @@
   border-radius: 12px;
   z-index: 8000;
 }
-:target {
+.modal-backdrop--active {
   display: block;
+  /* visibility: visible; */
 }
-.modal__close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 10px;
-  cursor: pointer;
-  text-decoration: none;
-}
-.modal .title {
-  font-size: 18px;
+.modal__header {
+  text-align: center;
 }
