@@ -1,14 +1,16 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types';
 import { Form, Input, Button } from '../../components';
-import { navigate } from '../../core/navigate';
 import { validations } from '../../core/utilities';
+import Router from '../../core/router/Router';
+import { routes } from '../../core/app/withRoutes';
+import { api } from '../../core/api';
 
 interface ISignInPageProps {
   events?: Partial<TEvents>;
   onLogin?: Partial<TEvents>;
   onSubmit?: Partial<TEvents>;
-  onNoAccount?: Partial<TEvents>;
+  onSignUp?: Partial<TEvents>;
 }
 
 type Ref = {
@@ -30,8 +32,8 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
       events: {
         submit: (e) => this.handleSubmit(e),
       },
-      onNoAccount: {
-        click: () => navigate('sign-up'),
+      onSignUp: {
+        click: () => Router.go(routes.signUp.route),
       }
     });
   }
@@ -53,10 +55,21 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
     const validationResult = this.validationField('login', 'validationLogin');
     if (validationResult) {
       const data = this.refs.form.getFormData();
+      const dataRequest: Record<string, string> = {};
       for (const [name, value] of data) {
-        console.log(name, ':', value);
+        if (typeof value === 'string') {
+          dataRequest[name] = value;
+        }
       }
-      navigate('app');
+      console.log(dataRequest);
+      api
+        .signIn(dataRequest as unknown as IUser.SignInRequest)
+        .then(() => {
+          Router.go(routes.messenger.route);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       console.error('validation error');
     }
@@ -84,7 +97,7 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
               name="no_account"
               className="button-link"
               label="Нет аккаунта?"
-              events=onNoAccount
+              events=onSignUp
             }}}
           </div>
         {{/Form}}

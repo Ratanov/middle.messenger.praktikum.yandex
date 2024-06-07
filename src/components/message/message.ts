@@ -1,6 +1,10 @@
 import Block from '../../core/Block';
+import { IChat } from '../../core/types';
+import { convertToHHMM } from '../../core/utilities'
 
-interface IMessageProps {}
+export interface IMessageProps extends Partial<IChat.WSMessage> {
+  userId?: number;
+}
 
 export default class Message extends Block<IMessageProps> {
   constructor(props: IMessageProps) {
@@ -8,20 +12,20 @@ export default class Message extends Block<IMessageProps> {
   }
 
   protected render(): string {
+    const { time, content, user_id, userId, type, file } = this.props;
+    
     return `
-      <div class="message {{#if incoming}}message--incoming{{/if}} {{className}}">
-        {{#if text}}
-          <div class="message__text">{{text}}
-            <span class="message__date">{{date}}</span>
-          </div>
-        {{/if}}
-        {{#if photo}}
+      <div class="message ${userId === user_id ? '' : 'message--incoming'} {{className}}">
+        ${type === 'image' ? `
           <div class="message__photo">
-            <img src="{{photo}}" alt="photo" />
-            <span class="message__date">{{date}}</span>
-          </div>
-        {{/if}}
+            <img src="${file}" alt="photo" />
+            <span class="message__date">${convertToHHMM(time)}</span>
+          </div>` : `
+          <div class="message__text">${content}
+            <span class="message__date">${convertToHHMM(time)}</span>
+          </div>`
+        }
       </div>
-    `
+    `;
   }
 }

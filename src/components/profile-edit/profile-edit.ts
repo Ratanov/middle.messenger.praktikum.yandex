@@ -1,10 +1,12 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types';
 import { Form, Input } from '../../components';
-import { navigate } from '../../core/navigate';
 import { validations } from '../../core/utilities';
+import { api } from '../../core/api';
+import Router from '../../core/router/Router';
+import { routes } from '../../core/app/withRoutes';
 
-interface IProfileEditProps {
+export interface IProfileEditProps {
   events?: Partial<TEvents>;
   onEmail?: Partial<TEvents>;
   onLogin?: Partial<TEvents>;
@@ -12,6 +14,7 @@ interface IProfileEditProps {
   onSecondName?: Partial<TEvents>;
   onDisplayName?: Partial<TEvents>;
   onPhone?: Partial<TEvents>;
+  sideEvent?: () => void;
 }
 
 type Ref = {
@@ -25,8 +28,9 @@ type Ref = {
 };
 
 export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
-  constructor() {
+  constructor(props: IProfileEditProps) {
     super({
+      ...props,
       onEmail: {
         focusout: () => {
           this.validationField('email', 'validationEmail');
@@ -61,6 +65,21 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
         submit: (e) => this.handleSubmit(e),
       },
     });
+    
+    api
+      .userInfo()
+      .then((data) => {
+        this.refs.email.setProps({value: data.email})
+        this.refs.login.setProps({value: data.login})
+        this.refs.first_name.setProps({value: data.first_name})
+        this.refs.second_name.setProps({value: data.second_name})
+        this.refs.display_name.setProps({value: data.display_name})
+        this.refs.phone.setProps({value: data.phone})
+      })
+      .catch((error) => {
+        console.error(error);
+        Router.go(routes.login.route);
+      });
   }
 
   protected validationAll() {
@@ -91,10 +110,22 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
     const validationResult = this.validationAll();
     if (validationResult) {
       const data = this.refs.form.getFormData();
+      const dataRequest: Record<string, string> = {};
       for (const [name, value] of data) {
-        console.log(name, ':', value);
+        if (typeof value === 'string') {
+          dataRequest[name] = value;
+        }
       }
-      navigate('app');
+      console.log(dataRequest);
+      api
+        .changeInfo(dataRequest as unknown as IUser.InfoResponse)
+        .then(() => {
+          this.props?.sideEvent?.();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+      Router.go(routes.profile.route)
     } else {
       console.error('validation error');
     }
@@ -102,81 +133,76 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
 
   protected render(): string {
     return `
-      {{# Form ref="form" className="profile__list" }}
-        <div class="profile__row">
-          {{{ Input 
-            ref="email"
-            label="Почта"
-            name="email"
-            type="email"
-            events=onEmail
-            defaultValue="pochta@yandex.ru"
-          }}}
-        </div>
+        {{# Form ref="form" className="profile__list" events=formEvents }}
+          <div class="profile__row">
+            {{{ Input 
+              ref="email"
+              label="Почта"
+              name="email"
+              type="email"
+              events=onEmail
+            }}}
+          </div>
 
-        <div class="profile__row">
-          {{{ Input 
-            ref="login"
-            label="Логин"
-            name="login"
-            type="text"
-            events=onLogin
-            defaultValue="ratanovoleg"
-          }}}
-        </div>
+          <div class="profile__row">
+            {{{ Input 
+              ref="login"
+              label="Логин"
+              name="login"
+              type="text"
+              events=onLogin
+            }}}
+          </div>
 
-        <div class="profile__row">
-          {{{ Input 
-            ref="first_name"
-            label="Имя"
-            name="first_name"
-            type="text"
-            events=onFirstName
-            defaultValue="Олег"
-          }}}
-        </div>
+          <div class="profile__row">
+            {{{ Input 
+              ref="first_name"
+              label="Имя"
+              name="first_name"
+              type="text"
+              events=onFirstName
+            }}}
+          </div>
 
-        <div class="profile__row">
-          {{{ Input 
-            ref="second_name"
-            label="Фамилия"
-            name="second_name"
-            type="text"
-            events=onSecondName
-            defaultValue="Ратанов"
-          }}}
-        </div>
+          <div class="profile__row">
+            {{{ Input 
+              ref="second_name"
+              label="Фамилия"
+              name="second_name"
+              type="text"
+              events=onSecondName
+            }}}
+          </div>
 
-        <div class="profile__row">
-          {{{ Input 
-            ref="display_name"
-            label="Имя в чате"
-            name="display_name"
-            type="text"
-            events=onDisplayName
-            defaultValue="Олег"
-          }}}
-        </div>
+          <div class="profile__row">
+            {{{ Input 
+              ref="display_name"
+              label="Имя в чате"
+              name="display_name"
+              type="text"
+              events=onDisplayName
+            }}}
+          </div>
 
-        <div class="profile__row">
-          {{{ Input 
-            ref="phone"
-            label="Телефон"
-            name="phone"
-            type="tel"
-            events=onPhone
-            defaultValue="89600878708"
-          }}}
-        </div>
+          <div class="profile__row">
+            {{{ Input 
+              ref="phone"
+              label="Телефон"
+              name="phone"
+              type="tel"
+              events=onPhone
+            }}}
+          </div>
 
-        {{{ Button 
-          ref="submit"
-          name="send"
-          type="submit"
-          className="mt-5 button-primary" 
-          label="Сохранить" 
-        }}}
-      {{/Form}}
+          {{{ Button 
+            ref="submit"
+            name="send"
+            type="submit"
+            className="mt-5 button-primary" 
+            label="Сохранить" 
+          }}}
+        {{/Form}}
+
     `;
   }
 }

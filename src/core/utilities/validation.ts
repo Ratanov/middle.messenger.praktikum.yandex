@@ -1,5 +1,5 @@
 import { TValidationResult } from './validationType';
-import { regex } from './regex';
+import { regex } from './';
 
 export const validationEmail = (email: string): TValidationResult => {
   const result = regex.isValidEmail.test(email);

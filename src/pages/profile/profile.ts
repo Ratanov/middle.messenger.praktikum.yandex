@@ -1,7 +1,9 @@
 import Block from '../../core/Block';
+import { api } from '../../core/api';
+import { routes } from '../../core/app/withRoutes';
+import Router from '../../core/router/Router';
 import { TEvents } from '../../core/types';
 import { constants } from '../../core/utilities';
-import { navigate } from '../../core/navigate';
 
 interface IProfileProps {
   onBack?: Partial<TEvents>;
@@ -11,41 +13,47 @@ interface IProfileProps {
   content?: 'profile' | 'profileEdit' | 'profileEditPassword';
   // eslint-disable-next-line
   profileInfo?: {};
+  isEditAvatar?: boolean;
 }
 
 // eslint-disable-next-line
-type Ref = {};
+type Ref = {
+  profile_row?: any;
+};
 
 export class Profile extends Block<IProfileProps, Ref> {
   constructor() {
     super({
       content: 'profile',
-      profileInfo: constants.profileInfoProps,
+      profileInfo: constants.profileInfoProps, /* ToDo */
+      isEditAvatar: false,
       onBack: {
         click: () => {
-          navigate('app');
+          Router.back()
         },
       },
       onChangeData: {
-        click: () => {
+        click: (e) => {
+          e.preventDefault()
           this.setProps({
             content: 'profileEdit',
+            isEditAvatar: true,
           });
         },
       },
       onChangePassword: {
-        click: () => {
+        click: (e) => {
+          e.preventDefault()
           this.setProps({
             content: 'profileEditPassword',
           });
         },
       },
       onExit: {
-        click: () => {
-          navigate('sign-in');
-        },
+        click: () => api.logout().finally(() => Router.go(routes.login.route)),
       },
     });
+
   }
 
   protected render(): string {
@@ -56,20 +64,14 @@ export class Profile extends Block<IProfileProps, Ref> {
           {{{ Button name="back_btn" className="button__icon button__back" events=onBack }}}
         </div>
         <div class="profile__right">
-          <a href="#modal_avatar" class="profile__avatar">
-            <img src="/assets/svg/profile-no-avatar.svg" alt="no-avatar">
-            <span class="profile__avatar--edit">Поменять аватар</span>
-          </a>
-          {{{ Modal id="modal_avatar" title="Загрузите файл" button="Поменять" upload=true }}}
-
+          {{{ ProfileAvatar isEdit=isEditAvatar }}}
             ${ content === 'profile' ? `
               {{# Form className="profile__list" }}
                 {{#each profileInfo }}
-                  {{{ProfileRow 
+                  {{{ProfileRow ref="profile_row"
                     name=this.name 
                     type=this.type
                     label=this.label 
-                    defaultValue=this.defaultValue 
                     readonly=this.readonly
                   }}}
                 {{/each}}

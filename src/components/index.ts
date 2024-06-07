@@ -1,5 +1,7 @@
 export { Button } from './button';
 export { Input } from './input';
+export { ChatListItem } from './chat-list-item';
+export { ChatList } from './chat-list';
 export { Chat } from './chat';
 export { Title } from './title';
 export { Link } from './link';
@@ -10,3 +12,4 @@ export { Popup } from './popup';
 export { Form } from './form';
 export { ProfileEdit } from './profile-edit';
 export { ProfileEditPassword } from './profile-edit-password';
+export { ProfileAvatar } from './profile-avatar';

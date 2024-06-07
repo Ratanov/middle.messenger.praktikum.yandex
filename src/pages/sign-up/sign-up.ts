@@ -1,8 +1,10 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types';
 import { Form, Input } from '../../components';
-import { navigate } from '../../core/navigate';
 import { validations } from '../../core/utilities';
+import Router from '../../core/router/Router';
+import { api } from '../../core/api';
+import { routes } from '../../core/app/withRoutes';
 
 interface ISignUpPageProps {
   events?: Partial<TEvents>;
@@ -69,7 +71,7 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
         submit: (e) => this.handleSubmit(e),
       },
       onSignIn: {
-        click: () => navigate('sign-in'),
+        click: () => Router.go(routes.login.route),
       },
     });
   }
@@ -116,10 +118,21 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
     const validationResult = this.validationAll();
     if (validationResult) {
       const data = this.refs.form.getFormData();
+      const dataRequest: Record<string, string> = {};
       for (const [name, value] of data) {
-        console.log(name, ':', value);
+        if (typeof value === 'string') {
+          dataRequest[name] = value;
+        }
       }
-      navigate('app');
+      console.log(dataRequest);
+      api
+        .signUp(dataRequest as unknown as IUser.SignUpRequest)
+        .then(() => {
+          Router.go(routes.messenger.route);
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       console.error('validation error');
     }

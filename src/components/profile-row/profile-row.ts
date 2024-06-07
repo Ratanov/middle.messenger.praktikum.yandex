@@ -16,7 +16,6 @@ export default class ProfileRow extends Block<object> {
             ref=ref 
             name=name 
             type=type 
-            defaultValue=defaultValue 
             readonly=readonly 
           }}}
         </div>

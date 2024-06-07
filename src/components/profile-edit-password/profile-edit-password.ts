@@ -1,14 +1,18 @@
 import Block from '../../core/Block';
 import { TEvents } from '../../core/types';
 import { Form, Input } from '..';
-import { navigate } from '../../core/navigate';
 import { validations } from '../../core/utilities';
+import { api } from '../../core/api';
+import { IUser } from '../../core/types';
+import Router from '../../core/router/Router';
+import { routes } from '../../core/app/withRoutes';
 
 interface IProfileEditPasswordProps {
   events?: Partial<TEvents>;
   onOldPassword?: Partial<TEvents>;
   onPassword?: Partial<TEvents>;
   onPasswordRepeat?: Partial<TEvents>;
+  submitSideEvent?: () => void;
 }
 
 type Ref = {
@@ -74,10 +78,21 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
     const validationResult = this.validationAll();
     if (validationResult) {
       const data = this.refs.form.getFormData();
+      const dataRequest: Record<string, string> = {};
       for (const [name, value] of data) {
-        console.log(name, ':', value);
+        if (typeof value === 'string') {
+          dataRequest[name] = value;
+        }
       }
-      navigate('profile');
+      console.log(dataRequest);
+      api
+        .changePassword(dataRequest as unknown as IUser.PasswordRequest)
+        .then(() => {
+          this.props?.submitSideEvent?.();
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     } else {
       console.error('validation error');
     }
@@ -88,12 +103,11 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
       {{# Form ref="form" className="profile__list" }}
         <div class="profile__row">
           {{{ Input 
-            ref="old_password"
+            ref="oldPassword"
             label="Старый пароль"
-            name="old_password"
+            name="oldPassword"
             type="password"
             events=onOldPassword
-            defaultValue="yandex.ru"
           }}}
         </div>
 
@@ -101,10 +115,9 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
           {{{ Input 
             ref="password"
             label="Новый пароль"
-            name="password"
+            name="newPassword"
             type="password"
             events=onPassword
-            defaultValue="ratanovoleg"
           }}}
         </div>
 
@@ -112,10 +125,9 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
           {{{ Input 
             ref="password_repeat"
             label="Повторите новый пароль"
-            name="password_repeat"
+            name="newPasswordRepeat"
             type="password"
             events=onPasswordRepeat
-            defaultValue="ratanovoleg"
           }}}
         </div>
 

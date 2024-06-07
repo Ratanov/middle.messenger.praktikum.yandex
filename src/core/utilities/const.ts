@@ -6,43 +6,43 @@ import cat3 from '/assets/03.jpg';
 export const profileInfoProps: {
   name: string;
   label: string;
-  defaultValue?: string;
+  value?: string;
   readonly?: boolean;
 }[] = [
   {
     name: 'email',
     label: 'Почта',
-    defaultValue: 'pochta@yandex.ru',
+    value: 'pochta@yandex.ru',
     readonly: true,
   },
   {
     name: 'login',
     label: 'Логин',
-    defaultValue: 'ratanovoleg',
+    value: 'ratanovoleg',
     readonly: true,
   },
   {
     name: 'first_name',
     label: 'Имя',
-    defaultValue: 'Олег',
+    value: 'Олег',
     readonly: true,
   },
   {
     name: 'second_name',
     label: 'Фамилия',
-    defaultValue: 'Ратанов',
+    value: 'Ратанов',
     readonly: true,
   },
   {
     name: 'display_name',
     label: 'Имя в чате',
-    defaultValue: 'Олег',
+    value: 'Олег',
     readonly: true,
   },
   {
     name: 'phone',
     label: 'Телефон',
-    defaultValue: '+7 960 087 87 08',
+    value: '+7 960 087 87 08',
     readonly: true,
   },
 ];

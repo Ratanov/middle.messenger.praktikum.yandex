@@ -11,7 +11,8 @@ interface IInputProps {
   readonly?: boolean;
   events?: Partial<TEvents>;
   error?: string;
-  defaultValue?: string;
+  // defaultValue?: string;
+  value?: string;
 }
 
 type Ref = {
@@ -46,9 +47,13 @@ export default class Input extends Block<IInputProps, Ref> {
 
     // На данный момент все события blur в копонентах заменил на focusout
 
-    if (props?.defaultValue) {
-      this.refs.input.value = props.defaultValue;
-    }
+    // if (props?.defaultValue) {
+    //   this.refs.input.value = props.defaultValue;
+    // }
+
+    // if (props?.setValue) {
+    //   this.refs.input.value = props.setValue;
+    // }
   }
 
   public value() {
@@ -86,8 +91,12 @@ export default class Input extends Block<IInputProps, Ref> {
     this.refs.error.innerText = error;
   }
 
+  public setValue(value: string) {
+    this.refs.input.innerText = value;
+  }
+
   protected render(): string {
-    const { name, type, className, label, readonly } = this.props;
+    const { name, type, className, label, readonly, value } = this.props;
     return `
       <div class="input w-100">
         <label class="input__container">
@@ -98,6 +107,8 @@ export default class Input extends Block<IInputProps, Ref> {
             class="${className ? `input__element ${className}` : 'input__element'}"
             ${readonly ? 'readonly' : ''}
             placeholder=""
+            ${value ? `value="${value}"` : null}
+            
           />
           ${label ? `<div class="input__label">${label}</div>` : ''}
           <span class="input__error" ref="error"></span>

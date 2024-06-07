@@ -99,3 +99,6 @@ body {
 .danger {
   color: var(--error-color) !important;
 }
+.d-none {
+  display: none !important;
+}

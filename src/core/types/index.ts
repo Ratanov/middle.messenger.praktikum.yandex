@@ -4,3 +4,10 @@ export type TEvents = {
 
 export type TEventListener<E extends keyof HTMLElementTagNameMap> =
   HTMLElementTagNameMap[E]['addEventListener'];
+
+export type ApiError = {
+  reason: string;
+};
+
+export * as IChat from './chat';
+export * as IUser from './user';

@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 
-export class Page500 extends Block<object> {
+export class ServerError extends Block<object> {
   protected render(): string {
     return `
       <div class="container flex-column">
