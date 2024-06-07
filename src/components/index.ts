@@ -10,6 +10,7 @@ export { ProfileRow } from './profile-row';
 export { Modal } from './modal';
 export { Popup } from './popup';
 export { Form } from './form';
+export { ProfileView } from './profile-view';
 export { ProfileEdit } from './profile-edit';
 export { ProfileEditPassword } from './profile-edit-password';
 export { ProfileAvatar } from './profile-avatar';

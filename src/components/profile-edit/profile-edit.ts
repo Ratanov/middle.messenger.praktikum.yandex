@@ -14,6 +14,7 @@ export interface IProfileEditProps {
   onSecondName?: Partial<TEvents>;
   onDisplayName?: Partial<TEvents>;
   onPhone?: Partial<TEvents>;
+  onCancel?: Partial<TEvents>;
   sideEvent?: () => void;
 }
 
@@ -60,6 +61,11 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
         focusout: () => {
           this.validationField('phone', 'validationPhone');
         },
+      },
+      onCancel: {
+        click: () => {
+          Router.go(routes.profile.route);
+        }
       },
       events: {
         submit: (e) => this.handleSubmit(e),
@@ -133,76 +139,79 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
 
   protected render(): string {
     return `
-        {{# Form ref="form" className="profile__list" events=formEvents }}
-          <div class="profile__row">
-            {{{ Input 
-              ref="email"
-              label="Почта"
-              name="email"
-              type="email"
-              events=onEmail
-            }}}
-          </div>
-
-          <div class="profile__row">
-            {{{ Input 
-              ref="login"
-              label="Логин"
-              name="login"
-              type="text"
-              events=onLogin
-            }}}
-          </div>
-
-          <div class="profile__row">
-            {{{ Input 
-              ref="first_name"
-              label="Имя"
-              name="first_name"
-              type="text"
-              events=onFirstName
-            }}}
-          </div>
-
-          <div class="profile__row">
-            {{{ Input 
-              ref="second_name"
-              label="Фамилия"
-              name="second_name"
-              type="text"
-              events=onSecondName
-            }}}
-          </div>
-
-          <div class="profile__row">
-            {{{ Input 
-              ref="display_name"
-              label="Имя в чате"
-              name="display_name"
-              type="text"
-              events=onDisplayName
-            }}}
-          </div>
-
-          <div class="profile__row">
-            {{{ Input 
-              ref="phone"
-              label="Телефон"
-              name="phone"
-              type="tel"
-              events=onPhone
-            }}}
-          </div>
-
-          {{{ Button 
-            ref="submit"
-            name="send"
-            type="submit"
-            className="mt-5 button-primary" 
-            label="Сохранить" 
+      {{# Form ref="form" className="profile__list" events=formEvents }}
+        <div class="profile__row">
+          {{{ Input 
+            ref="email"
+            label="Почта"
+            name="email"
+            type="email"
+            events=onEmail
           }}}
-        {{/Form}}
+        </div>
 
+        <div class="profile__row">
+          {{{ Input 
+            ref="login"
+            label="Логин"
+            name="login"
+            type="text"
+            events=onLogin
+          }}}
+        </div>
+
+        <div class="profile__row">
+          {{{ Input 
+            ref="first_name"
+            label="Имя"
+            name="first_name"
+            type="text"
+            events=onFirstName
+          }}}
+        </div>
+
+        <div class="profile__row">
+          {{{ Input 
+            ref="second_name"
+            label="Фамилия"
+            name="second_name"
+            type="text"
+            events=onSecondName
+          }}}
+        </div>
+
+        <div class="profile__row">
+          {{{ Input 
+            ref="display_name"
+            label="Имя в чате"
+            name="display_name"
+            type="text"
+            events=onDisplayName
+          }}}
+        </div>
+
+        <div class="profile__row">
+          {{{ Input 
+            ref="phone"
+            label="Телефон"
+            name="phone"
+            type="tel"
+            events=onPhone
+          }}}
+        </div>
+
+        {{{ Button 
+          ref="submit"
+          name="send"
+          type="submit"
+          className="mt-5 button-primary" 
+          label="Сохранить" 
+        }}}
+
+        <div class="profile__row text-center mt-2">
+          {{{ Link label="Отменить" className="danger w-100" name="cancel_btn" events=onCancel }}}
+        </div>
+      {{/Form}}
     `;
   }
 }

@@ -54,13 +54,13 @@ export default class ProfileAvatar extends Block<IProfileImageProps, Ref> {
     const { user, isEdit } = this.props;
     return ` 
       <div>
-        <div class="profile__avatar">
+        <div class="profile__avatar ${isEdit === true ? 'profile__avatar--edit': ''}">
           <img src="${user?.avatar ? `
             https://ya-praktikum.tech/api/v2/resources${user?.avatar}` 
             : 'assets/svg/profile-no-avatar.svg'}" alt="${user?.first_name} avatar"
           >
           <form>
-            ${isEdit === true ? '<label for="avatar" class="profile__avatar--edit">Поменять</label>' : ''}
+            ${isEdit === true ? '<label for="avatar" class="profile__label">Поменять</label>' : ''}
             <input
               ref="input"
               id="avatar" 
@@ -77,23 +77,3 @@ export default class ProfileAvatar extends Block<IProfileImageProps, Ref> {
     `;
   }
 }
-
-
-// <article class="profile-content-image">
-//   <div class="profile-content-image__image ${isEdit ? 'profile-content-image__image_pointer' : ''}">
-//       <img src="${
-//         user?.avatar ? `https://ya-praktikum.tech/api/v2/resources${user?.avatar}` : 'assets/avatar.jpg'
-//       }" alt="${user?.first_name} avatar" >
-//       <form class="profile-content-image__image_pointer__hover">
-//         <label for="avatar" class="profile-content-image__image_pointer__hover__label">Изменить</label>
-//         <input
-//           ref="input"
-//           id="avatar" 
-//           type="file" 
-//           class="profile-content-image__image_pointer__hover__input" 
-//           accept="image/png, image/jpeg"
-//           >
-//       </form>
-//   </div>
-//   <h1 class="profile-content-image__name">${user?.display_name ?? user?.first_name}</h1>
-// </article>

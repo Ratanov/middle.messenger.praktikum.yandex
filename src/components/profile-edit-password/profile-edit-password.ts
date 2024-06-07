@@ -12,6 +12,7 @@ interface IProfileEditPasswordProps {
   onOldPassword?: Partial<TEvents>;
   onPassword?: Partial<TEvents>;
   onPasswordRepeat?: Partial<TEvents>;
+  onCancel?: Partial<TEvents>;
   submitSideEvent?: () => void;
 }
 
@@ -34,6 +35,11 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
         focusout: () => {
           this.validationRepeatPassword();
         },
+      },
+      onCancel: {
+        click: () => {
+          Router.go(routes.profile.route);
+        }
       },
       events: {
         submit: (e) => this.handleSubmit(e),
@@ -138,6 +144,10 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
           className="mt-5 button-primary" 
           label="Сохранить" 
         }}}
+
+        <div class="profile__row text-center mt-2">
+          {{{ Link label="Отменить" className="danger w-100" name="cancel_btn" events=onCancel }}}
+        </div>
       {{/Form}}
     `;
   }

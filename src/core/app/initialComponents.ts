@@ -25,6 +25,7 @@ export function initialComponents() {
   registerComponent('Button', Components.Button);
   registerComponent('Link', Components.Link);
   registerComponent('ProfileRow', Components.ProfileRow);
+  registerComponent('ProfileView', Components.ProfileView);
   registerComponent('ProfileEdit', Components.ProfileEdit);
   registerComponent('ProfileEditPassword', Components.ProfileEditPassword);
   registerComponent('ProfileAvatar', Components.ProfileAvatar);

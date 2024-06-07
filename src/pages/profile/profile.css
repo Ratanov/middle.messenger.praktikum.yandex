@@ -36,12 +36,11 @@
   max-width: 510px;
   margin-top: 1rem;
 }
-
 /* Profile row */
 .profile__row {
   display: flex;
   justify-content: space-between;
-  padding: 0.75rem 0;
+  padding: 0.35rem 0;
   position: relative;
 }
 .profile__row::after {

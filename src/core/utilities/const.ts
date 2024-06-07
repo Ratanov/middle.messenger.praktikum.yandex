@@ -1,51 +1,6 @@
-
 import cat1 from '/assets/01.jpg';
 import cat2 from '/assets/02.jpg';
 import cat3 from '/assets/03.jpg';
-
-export const profileInfoProps: {
-  name: string;
-  label: string;
-  value?: string;
-  readonly?: boolean;
-}[] = [
-  {
-    name: 'email',
-    label: 'Почта',
-    value: 'pochta@yandex.ru',
-    readonly: true,
-  },
-  {
-    name: 'login',
-    label: 'Логин',
-    value: 'ratanovoleg',
-    readonly: true,
-  },
-  {
-    name: 'first_name',
-    label: 'Имя',
-    value: 'Олег',
-    readonly: true,
-  },
-  {
-    name: 'second_name',
-    label: 'Фамилия',
-    value: 'Ратанов',
-    readonly: true,
-  },
-  {
-    name: 'display_name',
-    label: 'Имя в чате',
-    value: 'Олег',
-    readonly: true,
-  },
-  {
-    name: 'phone',
-    label: 'Телефон',
-    value: '+7 960 087 87 08',
-    readonly: true,
-  },
-];
 
 export const popupUserProps: {
   img: string;

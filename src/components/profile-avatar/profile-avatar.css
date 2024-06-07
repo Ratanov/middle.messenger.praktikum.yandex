@@ -11,16 +11,16 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  max-width: 130px;
+  border-radius: 50%;
 }
-.profile__avatar--edit {
-  cursor: pointer;
-  font-weight: 700;
-  display: none;
-}
-.profile__avatar:hover {
+.profile__avatar--edit:hover {
   background: var(--text-secondary-color);
 }
-.profile__avatar:hover .profile__avatar--edit {
+.profile__avatar--edit:hover img {
+  opacity: .4;
+}
+.profile__avatar--edit .profile__label {
   display: block;
   color: white;
   position: absolute;
@@ -28,6 +28,8 @@
   top: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  font-weight: 700;
+  cursor: pointer;
 }
 .profile__name {
   height: 50px;

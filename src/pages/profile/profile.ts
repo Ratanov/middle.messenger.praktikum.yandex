@@ -1,9 +1,8 @@
 import Block from '../../core/Block';
 import { api } from '../../core/api';
-import { routes } from '../../core/app/withRoutes';
 import Router from '../../core/router/Router';
+import { routes } from '../../core/app/withRoutes';
 import { TEvents } from '../../core/types';
-import { constants } from '../../core/utilities';
 
 interface IProfileProps {
   onBack?: Partial<TEvents>;
@@ -11,25 +10,19 @@ interface IProfileProps {
   onChangePassword?: Partial<TEvents>;
   onExit?: Partial<TEvents>;
   content?: 'profile' | 'profileEdit' | 'profileEditPassword';
-  // eslint-disable-next-line
-  profileInfo?: {};
   isEditAvatar?: boolean;
+  isProfileNavigate?: boolean;
 }
 
-// eslint-disable-next-line
-type Ref = {
-  profile_row?: any;
-};
-
-export class Profile extends Block<IProfileProps, Ref> {
+export class Profile extends Block<IProfileProps> {
   constructor() {
     super({
       content: 'profile',
-      profileInfo: constants.profileInfoProps, /* ToDo */
       isEditAvatar: false,
+      isProfileNavigate: true,
       onBack: {
         click: () => {
-          Router.back()
+          Router.go(routes.messenger.route)
         },
       },
       onChangeData: {
@@ -38,6 +31,7 @@ export class Profile extends Block<IProfileProps, Ref> {
           this.setProps({
             content: 'profileEdit',
             isEditAvatar: true,
+            isProfileNavigate: false,
           });
         },
       },
@@ -46,6 +40,8 @@ export class Profile extends Block<IProfileProps, Ref> {
           e.preventDefault()
           this.setProps({
             content: 'profileEditPassword',
+            isEditAvatar: false,
+            isProfileNavigate: false,
           });
         },
       },
@@ -57,7 +53,7 @@ export class Profile extends Block<IProfileProps, Ref> {
   }
 
   protected render(): string {
-    const { content } = this.props;
+    const { content, isProfileNavigate } = this.props;
     return `
       <div class="profile">
         <div class="profile__left">
@@ -65,29 +61,24 @@ export class Profile extends Block<IProfileProps, Ref> {
         </div>
         <div class="profile__right">
           {{{ ProfileAvatar isEdit=isEditAvatar }}}
-            ${ content === 'profile' ? `
-              {{# Form className="profile__list" }}
-                {{#each profileInfo }}
-                  {{{ProfileRow ref="profile_row"
-                    name=this.name 
-                    type=this.type
-                    label=this.label 
-                    readonly=this.readonly
-                  }}}
-                {{/each}}
-                <div class="profile__row mt-5 pt-5">
-                  {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
-                </div>
-                <div class="profile__row">
-                  {{{ Link label="Изменить пароль" name="change_password" events=onChangePassword }}}
-                </div>
-                <div class="profile__row">
-                  {{{ Link label="Выйти" className="danger" name="exit_btn" events=onExit }}}
-                </div>
-              {{/Form}}
-            ` : ''}
-            ${ content === 'profileEdit' ? `{{{ ProfileEdit }}}` : '' }
-            ${ content === 'profileEditPassword' ? `{{{ ProfileEditPassword }}}` : '' }
+
+          ${ content === 'profile' ? '{{{ ProfileView }}}' : '' }
+          ${ content === 'profileEdit' ? '{{{ ProfileEdit }}}' : '' }
+          ${ content === 'profileEditPassword' ? '{{{ ProfileEditPassword }}}' : '' }
+
+          ${ isProfileNavigate ? `
+            {{# Form className="profile__list" }}
+              <div class="profile__row mt-5 pt-5">
+                {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
+              </div>
+              <div class="profile__row">
+                {{{ Link label="Изменить пароль" name="change_password" events=onChangePassword }}}
+              </div>
+              <div class="profile__row">
+                {{{ Link label="Выйти" className="danger" name="exit_btn" events=onExit }}}
+              </div>
+            {{/Form}}
+            ` : '' }
         </div>
       </div>
     `;

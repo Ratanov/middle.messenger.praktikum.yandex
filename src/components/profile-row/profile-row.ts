@@ -1,8 +1,14 @@
 import Block from '../../core/Block';
 
-interface IProfileRowProps {}
+export interface IProfileRowProps {
+  name?: string;
+  type?: 'text' | 'number' | 'password' | 'email' | 'tel';
+  label?: string;
+  readonly?: boolean;
+  value?: string;
+}
 
-export default class ProfileRow extends Block<object> {
+export default class ProfileRow extends Block<IProfileRowProps> {
   constructor(props: IProfileRowProps) {
     super(props);
   }
@@ -17,6 +23,7 @@ export default class ProfileRow extends Block<object> {
             name=name 
             type=type 
             readonly=readonly 
+            value=value
           }}}
         </div>
       </div>

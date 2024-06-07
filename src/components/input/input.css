@@ -52,7 +52,13 @@
   border-bottom: none;
 }
 .profile__row .input__error {
-  bottom: -15px;
+  width: 205px;
+  height: fit-content;
+  bottom: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: -220px;
+  line-height: 1.3;
 }
 .profile__row .input__element:not(:placeholder-shown) + .input__label, 
 .profile__row .input__element:focus + .input__label {
