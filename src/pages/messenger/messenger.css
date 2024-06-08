@@ -8,12 +8,15 @@
   flex-direction: column;
   overflow: auto;
 }
-.messenger__right > div {
+.messenger__right {
+  width: 100%;
+}
+/* .messenger__right > div {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-}
+} */
 .messenger__right--no-chat {
   width: 100%;
   display: flex;

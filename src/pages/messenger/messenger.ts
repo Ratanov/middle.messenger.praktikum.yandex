@@ -1,3 +1,4 @@
+import Chat, { IChatProps } from '../../components/chat/chat';
 import Block from '../../core/Block';
 import { routes } from '../../core/app/withRoutes';
 import Router from '../../core/router/Router';
@@ -5,10 +6,14 @@ import { TEvents } from '../../core/types';
 
 interface IMessengerProps {
   onProfile?: Partial<TEvents>;
-  isChatOpen?: boolean;
+  onChangeChat?: (data: IChatProps) => void;
 }
 
-export class Messenger extends Block<IMessengerProps> {
+type Ref = {
+  chat: Chat;
+};
+
+export class Messenger extends Block<IMessengerProps, Ref> {
   constructor() {
     super({
       onProfile: {
@@ -17,27 +22,29 @@ export class Messenger extends Block<IMessengerProps> {
         },
       },
     });
+
+    window.onChangeChat = this.onChangeChat.bind(this);
+  }
+
+  private onChangeChat(data: IChatProps) {
+    console.log('onChangeChat', data)
+    this.refs.chat.setProps({ ...data });
   }
 
   protected render(): string {
-    const { isChatOpen } = this.props;
     return `
       <div class="messenger flex">
         <div class="messenger__left">
           {{{ Button name="profile" label="Профиль" events=onProfile }}}
 
           {{{ ChatList }}}
-          
         </div>
 
         <div class="messenger__border"></div>
 
-        <div class='messenger__right${isChatOpen ? '': '--no-chat'}'>
-          ${isChatOpen ? `{{{ Chat }}}` : '<div>Выберите чат чтобы отправить сообщение</div>'}
+        <div class="messenger__right">
+          {{{ Chat ref="chat" }}}
         </div>
-
-        {{{ Modal id="modal_add_user" title="Добавить пользователя" button="Добавить" }}}
-        {{{ Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить" }}}
       </div>
     `;
   }

@@ -13,6 +13,7 @@
   justify-content: space-between;
   padding: 8px 0;
   position: relative;
+  height: 50px;
 }
 .chat__header::after {
   position: absolute;
@@ -29,11 +30,25 @@
   border-radius: 50%;
   background: var(--bg-second-color);
 }
+
+.chat__body {
+  min-height: calc(100vh - 100px);
+}
 /* Messages footer */
 .chat__footer {
   display: flex;
   align-items: center;
   position: relative;
+  height: 50px;
+}
+.chat__footer::before {
+  position: absolute;
+  content: '';
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
 }
 .chat__area {
   background: var(--bg-second-color);

@@ -9,7 +9,7 @@ import { initialComponents } from './core/app/initialComponents';
 
 declare global {
   interface Window {
-    // updateChatList: () => void;
+    updateChatList: () => void;
     onChangeChat: (data: IChatProps) => void;
     messages?: any[];
     WebSocketTransport: WebSocketTransport;

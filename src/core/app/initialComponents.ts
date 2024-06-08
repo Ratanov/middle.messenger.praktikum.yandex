@@ -35,4 +35,7 @@ export function initialComponents() {
   registerComponent('ChatListItem', Components.ChatListItem);
   registerComponent('Popup', Components.Popup);
   registerComponent('Modal', Components.Modal);
+  registerComponent('ChatWrapper', Components.ChatWrapper);
+  registerComponent('ChatHeader', Components.ChatHeader);
+  registerComponent('ChatBody', Components.ChatBody);
 }

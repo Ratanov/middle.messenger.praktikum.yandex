@@ -15,13 +15,17 @@ export default class Chat extends Block<IChatProps> {
     super(props);
 
     const chatId = props.chatConfig?.id;
+    console.log('chatId', chatId);
     if (chatId) {
       api
         .getToken({ chatId: chatId })
         .then(async (data) => {
           const userInfo = await api.userInfo();
-          WebSocketTransport.createConnection(userInfo.id, chatId, data.token, (messages) =>
-            this.setProps({ messages }),
+          WebSocketTransport.createConnection(
+            userInfo.id,
+            chatId,
+            data.token,
+            (messages) => this.setProps({ messages }),
           );
         })
         .catch((err) => {
@@ -31,37 +35,26 @@ export default class Chat extends Block<IChatProps> {
   }
 
   protected render(): string {
+    const { isChatOpen } = this.props;
     return `
-      <div>
-        <div class="chat__header mx-5">
-          <div class="flex align-center">
-            <div class="circle"></div>
-              {{{ Title text="Вадим" className="ml-2" }}}
-            </div>
-          {{{ Button name="popup_user" className="button__icon button__menu popup-trigger" }}}
-          {{{ Popup id="popup_user" position="bottom" }}}
-        </div>
+      {{#ChatWrapper ref="chatsWrapper" isChatOpen=isChatOpen}}
+        ${
+          isChatOpen
+            ? `
+          {{{ ChatHeader chatConfig=chatConfig }}}
 
-        <div class="chat__body px-5">
-          {{#each messages}}
-            {{{ MessageList 
-              key=@index 
-              ref=this.text 
-              text=this.text 
-              photo=this.photo 
-              date=this.date 
-              incoming=this.incoming 
-            }}}
-          {{/each}}
-        </div>
+          {{{ ChatBody }}}
         
-        <div class="chat__footer mx-5">
-          {{{ Button name="attach" className="button__icon button__attach popup-trigger" }}}
-          {{{ Popup id="popup_attach" position="top" }}}
-          <textarea class="chat__area w-100 mx-2" placeholder="Сообщение" rows="1" name="message" autofocus></textarea>
-          {{{ Button name="send" className="button__icon button__send" }}}
-        </div>
-      </div>
+          <div class="chat__footer px-5">
+            {{{ Button name="attach" className="button__icon button__attach popup-trigger" }}}
+            {{{ Popup id="popup_attach" position="top" }}}
+            <textarea class="chat__area w-100 mx-2" placeholder="Сообщение" rows="1" name="message" autofocus></textarea>
+            {{{ Button name="send" className="button__icon button__send" }}}
+          </div>
+        `
+            : ''
+        }
+      {{/ChatWrapper}}
     `;
   }
 }
