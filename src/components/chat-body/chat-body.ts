@@ -2,11 +2,13 @@ import Block from '../../core/Block';
 import { api } from '../../core/api';
 import { IChat, TEvents } from '../../core/types/api';
 import WebSocketTransport from '../../core/api/webSocket';
+import { InfoResponse } from '../../core/types/api/user';
 
 export interface IChatBodyProps {
   chatConfig?: IChat.GETChatsResponse;
   events?: Partial<TEvents>;
   messages?: Array<IChat.WSMessage>;
+  userInfo: InfoResponse;
 }
 
 export default class ChatBody extends Block<IChatBodyProps> {
@@ -23,7 +25,11 @@ export default class ChatBody extends Block<IChatBodyProps> {
             userInfo.id,
             chatId,
             data.token,
-            (messages) => this.setProps({ messages }),
+            (messages) =>
+              this.setProps({
+                messages,
+                userInfo: userInfo,
+              }),
           );
         })
         .catch((err) => {
@@ -37,7 +43,7 @@ export default class ChatBody extends Block<IChatBodyProps> {
       <div class="chat__body px-5">
         {{#each messages}}
           {{{ Message
-            createdBy=${this.props.chatConfig?.created_by}
+            createdBy=${this.props.userInfo?.id}
             user_id=this.user_id
             time=this.time
             type=this.type

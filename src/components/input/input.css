@@ -41,7 +41,7 @@
 }
 /* Profile input */
 .profile__row .input__container {
-  height: unset;
+  height: 100%;
   margin-top: 0;
   flex-direction: row-reverse;
   justify-content: space-between;

@@ -71,7 +71,7 @@ export class Profile extends Block<IProfileProps> {
             isProfileNavigate
               ? `
             {{# Form className="profile__list" }}
-              <div class="profile__row mt-5 pt-5">
+              <div class="profile__row mt-5">
                 {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
               </div>
               <div class="profile__row">

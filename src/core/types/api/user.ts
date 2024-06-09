@@ -19,7 +19,7 @@ export interface SignInRequest {
 export type SignInResponse = 'Ok';
 
 export type InfoResponse = {
-  id: 123;
+  id: number;
   first_name: string;
   second_name: string;
   display_name: string;

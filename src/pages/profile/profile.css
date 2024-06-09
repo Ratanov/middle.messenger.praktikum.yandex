@@ -40,8 +40,14 @@
 .profile__row {
   display: flex;
   justify-content: space-between;
-  padding: 0.35rem 0;
+  padding: 0.35rem;
   position: relative;
+}
+.profile__row:hover {
+  background-color: var(--bg-second-color);
+}
+.profile__row--no-hover:hover {
+  background-color: unset;
 }
 .profile__row::after {
   position: absolute;
@@ -51,6 +57,9 @@
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
+}
+.profile__row--no-after::after {
+  border-bottom: none;
 }
 .profile__text {
   color: var(--text-secondary-color);

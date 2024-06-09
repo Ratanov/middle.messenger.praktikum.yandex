@@ -36,7 +36,7 @@ export class Messenger extends Block<IMessengerProps, Ref> {
     return `
       <div class="messenger flex">
         <div class="messenger__left">
-          {{{ Button name="profile" label="Профиль" events=onProfile }}}
+          {{{ Button name="profile" label="Профиль" className="button-profile" events=onProfile }}}
 
           {{{ ChatList ref="chatList" }}}
         </div>

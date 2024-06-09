@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
 import { api } from '../../core/api';
-import { IChat, TEvents } from '../../core/types';
+import { IChat, TEvents } from '../../core/types/api';
 import { Input, Modal } from '..';
 
 interface IChatListProps {
@@ -48,7 +48,7 @@ export default class ChatList extends Block<IChatListProps, Ref> {
     });
 
     this.updateList();
-    // window.updateChatList = this.updateList.bind(this);
+    window.updateChatList = this.updateList.bind(this);
   }
 
   public updateList(data?: IChat.GETChatUsersRequest) {
@@ -98,7 +98,7 @@ export default class ChatList extends Block<IChatListProps, Ref> {
               <h3 class="mb-2">Создать чат</h3>
             </div>
             <div class="modal__body">
-              {{# Form className="profile__list" }}
+              {{# Form }}
                 {{{ Input
                     ref="inputTitle"
                     label="Название чата"

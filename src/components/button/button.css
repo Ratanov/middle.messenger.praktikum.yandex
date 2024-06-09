@@ -9,26 +9,28 @@
   cursor: pointer;
   z-index: 1;
 }
-
+.button:hover {
+  background-color: var(--bg-second-color);
+}
 .button-primary {
   background-color: var(--main-color);
   color: #fff;
   font-size: 13px;
 }
-
+.button-primary:hover {
+  background-color: var(--main-color-hover);
+}
 .button-link {
   color: var(--main-color);
   font-size: 11px;
   text-align: center;
 }
-
 .button-arrow {
   background-color: var(--main-color);
   height: 28px;
   width: 28px;
   border-radius: 50%;
 }
-
 .button-arrow__left,
 .button-arrow__right {
   margin: 0 auto;
@@ -37,7 +39,6 @@
   position: relative;
   background-color: #fff;
 }
-
 .button-arrow__left::after,
 .button-arrow__left::before,
 .button-arrow__right::after,
@@ -49,23 +50,19 @@
   height: 1.6px;
   position: absolute;
 }
-
 .button-arrow__right::after {
   transform: rotate(45deg);
   bottom: 2px;
 }
-
 .button-arrow__right::before {
   transform: rotate(-45deg);
   top: 2px;
 }
-
 .button-arrow__left::after {
   transform: rotate(-45deg);
   bottom: 2px;
   left: -1px;
 }
-
 .button-arrow__left::before {
   transform: rotate(45deg);
   top: 2px;
@@ -74,6 +71,9 @@
 .button__icon {
   width: 34px;
   height: 34px;
+}
+.button__icon:hover {
+  background-color: unset;
 }
 .button__menu {
   background: url('/assets/svg/three-dots.svg') no-repeat center;
@@ -84,7 +84,6 @@
     url('/assets/svg/three-dots.svg') no-repeat center,
     var(--bg-second-color);
 }
-
 .button__attach {
   background: url('/assets/svg/attach.svg') no-repeat center;
 }
@@ -93,4 +92,13 @@
 }
 .button__back {
   background: url('/assets/svg/back.svg') no-repeat center;
+}
+.button-profile {
+  padding: 6px;
+  width: fit-content;
+  margin-left: auto;
+}
+.button-profile:hover {
+  background-color: unset;
+  color: var(--main-color);
 }

@@ -21,7 +21,7 @@ type Ref = {
 };
 
 export default class ProfileView extends Block<IProfileViewProps, Ref> {
-  constructor(props: IProfileViewProps) {
+  constructor() {
     super({
       profileRowItems: [],
     });
@@ -29,15 +29,50 @@ export default class ProfileView extends Block<IProfileViewProps, Ref> {
     api
       .userInfo()
       .then((data) => {
-        console.log('data', data)
         this.setProps({
           profileRowItems: [
-            { name: 'email', type: 'email', label: 'Почта', readonly: true, value: data.email },
-            { name: 'login', type: 'text', label: 'Логин', readonly: true, value: data.login },
-            { name: 'first_name', type: 'text', label: 'Имя', readonly: true, value: data.first_name },
-            { name: 'second_name', type: 'text', label: 'Фамилия', readonly: true, value: data.second_name },
-            { name: 'display_name', type: 'text', label: 'Имя в чате', readonly: true, value: data.display_name },
-            { name: 'phone', type: 'tel', label: 'Телефон', readonly: true, value: data.phone },
+            {
+              name: 'email',
+              type: 'email',
+              label: 'Почта',
+              readonly: true,
+              value: data.email,
+            },
+            {
+              name: 'login',
+              type: 'text',
+              label: 'Логин',
+              readonly: true,
+              value: data.login,
+            },
+            {
+              name: 'first_name',
+              type: 'text',
+              label: 'Имя',
+              readonly: true,
+              value: data.first_name,
+            },
+            {
+              name: 'second_name',
+              type: 'text',
+              label: 'Фамилия',
+              readonly: true,
+              value: data.second_name,
+            },
+            {
+              name: 'display_name',
+              type: 'text',
+              label: 'Имя в чате',
+              readonly: true,
+              value: data.display_name,
+            },
+            {
+              name: 'phone',
+              type: 'tel',
+              label: 'Телефон',
+              readonly: true,
+              value: data.phone,
+            },
           ],
         });
       })
@@ -61,6 +96,6 @@ export default class ProfileView extends Block<IProfileViewProps, Ref> {
           }}}
         {{/each}}
       {{/Form}}
-    `
+    `;
   }
 }

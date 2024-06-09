@@ -207,7 +207,7 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
           label="Сохранить" 
         }}}
 
-        <div class="profile__row text-center mt-2">
+        <div class="profile__row profile__row--no-after profile__row--no-hover text-center mt-2">
           {{{ Link label="Отменить" className="danger w-100" name="cancel_btn" events=onCancel }}}
         </div>
       {{/Form}}

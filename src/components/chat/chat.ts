@@ -7,6 +7,7 @@ export interface IChatProps {
   chatConfig?: IChat.GETChatsResponse;
   isChatOpen?: boolean;
   messages?: Array<IMessageProps>;
+  updateChatList?: () => void;
 }
 
 type Ref = {
@@ -16,7 +17,7 @@ type Ref = {
   chatFooter?: ChatFooter;
 };
 
-export default class Chat extends Block<IChatProps, Ref> {
+export default class Chat extends Block<IChatProps> {
   constructor(props: IChatProps) {
     super(props);
   }
@@ -24,15 +25,13 @@ export default class Chat extends Block<IChatProps, Ref> {
   protected render(): string {
     const { isChatOpen } = this.props;
     return `
-      {{#ChatWrapper ref="chatWrapper" isChatOpen=isChatOpen}}
+      {{#ChatWrapper isChatOpen=isChatOpen}}
         ${
           isChatOpen
             ? `
-          {{{ ChatHeader ref="chatHeader" chatConfig=chatConfig }}}
-
-          {{{ ChatBody ref="chatBody" chatConfig=chatConfig messages=messages }}}
-        
-          {{{ ChatFooter ref="chatFooter" }}}
+          {{{ ChatHeader chatConfig=chatConfig }}}
+          {{{ ChatBody chatConfig=chatConfig messages=messages }}}
+          {{{ ChatFooter }}}
         `
             : ''
         }
