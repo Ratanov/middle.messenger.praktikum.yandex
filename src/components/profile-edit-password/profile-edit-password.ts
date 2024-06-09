@@ -89,7 +89,6 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
           dataRequest[name] = value;
         }
       }
-      console.log(dataRequest);
       api
         .changePassword(dataRequest as unknown as IUser.PasswordRequest)
         .then(() => {
@@ -98,6 +97,7 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
         .catch((err) => {
           console.error(err);
         });
+      Router.go(routes.profile.route);
     } else {
       console.error('validation error');
     }

@@ -124,7 +124,6 @@ export class SignUp extends Block<ISignUpPageProps, Ref> {
           dataRequest[name] = value;
         }
       }
-      console.log(dataRequest);
       api
         .signUp(dataRequest as unknown as IUser.SignUpRequest)
         .then(() => {

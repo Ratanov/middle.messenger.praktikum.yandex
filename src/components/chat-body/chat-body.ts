@@ -33,7 +33,6 @@ export default class ChatBody extends Block<IChatBodyProps> {
   }
 
   protected render(): string {
-    console.log('render', 1);
     return `
       <div class="chat__body px-5">
         {{#each messages}}

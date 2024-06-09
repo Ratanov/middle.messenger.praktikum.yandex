@@ -122,7 +122,6 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
           dataRequest[name] = value;
         }
       }
-      console.log(dataRequest);
       api
         .changeInfo(dataRequest as unknown as IUser.InfoResponse)
         .then(() => {

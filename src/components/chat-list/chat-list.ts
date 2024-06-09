@@ -33,7 +33,6 @@ export default class ChatList extends Block<IChatListProps, Ref> {
             return;
           }
 
-          console.log({ title: value });
           api
             .createChat({ title: value })
             .then(async () => {

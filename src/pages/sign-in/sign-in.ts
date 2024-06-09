@@ -61,7 +61,6 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
           dataRequest[name] = value;
         }
       }
-      console.log(dataRequest);
       api
         .signIn(dataRequest as unknown as IUser.SignInRequest)
         .then(() => {
