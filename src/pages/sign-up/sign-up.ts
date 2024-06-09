@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { IUser, TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types/api';
 import { Form, Input } from '../../components';
 import { validations } from '../../core/utilities';
 import Router from '../../core/router/Router';

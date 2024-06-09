@@ -1,4 +1,4 @@
-import { IChat } from './types';
+import { IChat } from '../types/api';
 
 export default class WebSocketTransport {
   private static instance: WebSocketTransport;
@@ -41,7 +41,7 @@ export default class WebSocketTransport {
 
   private static onClose(event: CloseEvent) {
     if (event.wasClean) {
-      console.log('Соединение закрыто чисто');
+      console.log('Соединение закрыто');
     } else {
       console.log('Обрыв соединения');
     }

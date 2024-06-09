@@ -79,13 +79,15 @@ export default class ChatList extends Block<IChatListProps, Ref> {
   protected render(): string {
     return `
       <div>
-        {{{ Button
-            name="new_chat"
-            label="Новый чат"
-            type="button"
-            className="primary"
-            events=onModalOpen
-        }}}
+        <div class="m-2">
+          {{{ Button
+              name="new_chat"
+              label="Новый чат"
+              type="button"
+              className="button-primary"
+              events=onModalOpen
+          }}}
+        </div>
 
         <div class="m-2">
           <input ref="search" name="search" class="search" type="search" placeholder="Поиск..." />

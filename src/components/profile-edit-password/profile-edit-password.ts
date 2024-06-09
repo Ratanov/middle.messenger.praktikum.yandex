@@ -1,9 +1,8 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types/api';
 import { Form, Input } from '..';
 import { validations } from '../../core/utilities';
 import { api } from '../../core/api';
-import { IUser } from '../../core/types';
 import Router from '../../core/router/Router';
 import { routes } from '../../core/app/withRoutes';
 

@@ -1,3 +1,6 @@
 .chat__body {
-  min-height: calc(100vh - 100px);
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }

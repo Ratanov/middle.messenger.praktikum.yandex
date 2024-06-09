@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
-import { TValidationResult } from '../../core/utilities/validationType';
+import { TEvents } from '../../core/types/api';
+import { TValidationResult } from '../../core/types/utilities/validation';
 import { validations } from '../../core/utilities';
 
 interface IInputProps {

@@ -1,8 +1,9 @@
-import Chat, { IChatProps } from '../../components/chat/chat';
 import Block from '../../core/Block';
+import { Chat, ChatList } from '../../components';
+import { IChatProps } from '../../components/chat';
 import { routes } from '../../core/app/withRoutes';
 import Router from '../../core/router/Router';
-import { TEvents } from '../../core/types';
+import { TEvents } from '../../core/types/api';
 
 interface IMessengerProps {
   onProfile?: Partial<TEvents>;
@@ -10,6 +11,7 @@ interface IMessengerProps {
 }
 
 type Ref = {
+  chatList: ChatList;
   chat: Chat;
 };
 
@@ -18,7 +20,7 @@ export class Messenger extends Block<IMessengerProps, Ref> {
     super({
       onProfile: {
         click: () => {
-          Router.go(routes.profile.route)
+          Router.go(routes.profile.route);
         },
       },
     });
@@ -27,7 +29,6 @@ export class Messenger extends Block<IMessengerProps, Ref> {
   }
 
   private onChangeChat(data: IChatProps) {
-    console.log('onChangeChat', data)
     this.refs.chat.setProps({ ...data });
   }
 
@@ -37,7 +38,7 @@ export class Messenger extends Block<IMessengerProps, Ref> {
         <div class="messenger__left">
           {{{ Button name="profile" label="Профиль" events=onProfile }}}
 
-          {{{ ChatList }}}
+          {{{ ChatList ref="chatList" }}}
         </div>
 
         <div class="messenger__border"></div>

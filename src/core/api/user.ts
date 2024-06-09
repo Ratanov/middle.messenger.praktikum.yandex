@@ -1,15 +1,19 @@
-import { HTTPTransport } from '../../../core/httpTransport'
-import { IUser } from '../../../core/types';
-import { ApiError } from '../../../core/types';
+import { HTTPTransport } from './httpTransport';
+import { IUser } from '../types/api';
+import { ApiError } from '../types/api';
 
 const transport = new HTTPTransport('');
 
 export default class UserApi {
-  async create(data: IUser.SignUpRequest): Promise<IUser.SignUpResponse | ApiError> {
+  async create(
+    data: IUser.SignUpRequest,
+  ): Promise<IUser.SignUpResponse | ApiError> {
     return transport.post<IUser.SignUpResponse>('/auth/signup', { data });
   }
 
-  async login(data: IUser.SignInRequest): Promise<IUser.SignInResponse | ApiError> {
+  async login(
+    data: IUser.SignInRequest,
+  ): Promise<IUser.SignInResponse | ApiError> {
     return transport.post<IUser.SignInResponse>('/auth/signin', { data });
   }
 
@@ -21,11 +25,15 @@ export default class UserApi {
     return transport.post('/auth/logout');
   }
 
-  async changeInfo(data: IUser.InfoResponse): Promise<IUser.InfoResponse | ApiError> {
+  async changeInfo(
+    data: IUser.InfoResponse,
+  ): Promise<IUser.InfoResponse | ApiError> {
     return transport.put<IUser.InfoResponse>('/user/profile', { data });
   }
 
-  async changePassword(data: IUser.PasswordRequest): Promise<IUser.PasswordResponse | ApiError> {
+  async changePassword(
+    data: IUser.PasswordRequest,
+  ): Promise<IUser.PasswordResponse | ApiError> {
     return transport.put<IUser.PasswordResponse>('/user/password', { data });
   }
 

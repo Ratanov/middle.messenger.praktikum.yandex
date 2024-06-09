@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { IChat, TEvents } from '../../core/types';
+import { IChat, TEvents } from '../../core/types/api';
 import { Modal } from '../';
 import { api } from '../../core/api';
 

@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { IUser, TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types/api';
 import { Form, Input } from '../../components';
 import { validations } from '../../core/utilities';
 import { api } from '../../core/api';
@@ -65,22 +65,22 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
       onCancel: {
         click: () => {
           Router.go(routes.profile.route);
-        }
+        },
       },
       events: {
         submit: (e) => this.handleSubmit(e),
       },
     });
-    
+
     api
       .userInfo()
       .then((data) => {
-        this.refs.email.setProps({value: data.email})
-        this.refs.login.setProps({value: data.login})
-        this.refs.first_name.setProps({value: data.first_name})
-        this.refs.second_name.setProps({value: data.second_name})
-        this.refs.display_name.setProps({value: data.display_name})
-        this.refs.phone.setProps({value: data.phone})
+        this.refs.email.setProps({ value: data.email });
+        this.refs.login.setProps({ value: data.login });
+        this.refs.first_name.setProps({ value: data.first_name });
+        this.refs.second_name.setProps({ value: data.second_name });
+        this.refs.display_name.setProps({ value: data.display_name });
+        this.refs.phone.setProps({ value: data.phone });
       })
       .catch((error) => {
         console.error(error);
@@ -131,7 +131,7 @@ export default class ProfileEdit extends Block<IProfileEditProps, Ref> {
         .catch((err) => {
           console.error(err);
         });
-      Router.go(routes.profile.route)
+      Router.go(routes.profile.route);
     } else {
       console.error('validation error');
     }

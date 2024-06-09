@@ -1,4 +1,4 @@
-import { TValidationResult } from './validationType';
+import { TValidationResult } from '../types/utilities/validation';
 import { regex } from './';
 
 export const validationEmail = (email: string): TValidationResult => {

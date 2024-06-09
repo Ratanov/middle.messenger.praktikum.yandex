@@ -1,7 +1,7 @@
-import Block from "../../core/Block";
-import { api } from "../../core/api";
-import { IChat, TEvents } from "../../core/types";
-import WebSocketTransport from "../../core/webSocket";
+import Block from '../../core/Block';
+import { api } from '../../core/api';
+import { IChat, TEvents } from '../../core/types/api';
+import WebSocketTransport from '../../core/api/webSocket';
 
 export interface IChatBodyProps {
   chatConfig?: IChat.GETChatsResponse;
@@ -19,8 +19,11 @@ export default class ChatBody extends Block<IChatBodyProps> {
         .getToken({ chatId: chatId })
         .then(async (data) => {
           const userInfo = await api.userInfo();
-          WebSocketTransport.createConnection(userInfo.id, chatId, data.token, (messages) =>
-            this.setProps({ messages }),
+          WebSocketTransport.createConnection(
+            userInfo.id,
+            chatId,
+            data.token,
+            (messages) => this.setProps({ messages }),
           );
         })
         .catch((err) => {
@@ -30,19 +33,20 @@ export default class ChatBody extends Block<IChatBodyProps> {
   }
 
   protected render(): string {
+    console.log('render', 1);
     return `
       <div class="chat__body px-5">
         {{#each messages}}
-          {{{ MessageList 
-            key=@index 
-            ref=this.text 
-            text=this.text 
-            photo=this.photo 
-            date=this.date 
-            incoming=this.incoming 
+          {{{ Message
+            createdBy=${this.props.chatConfig?.created_by}
+            user_id=this.user_id
+            time=this.time
+            type=this.type
+            content=this.content
+            file=this.file
           }}}
         {{/each}}
-      </div>         
+      </div>      
     `;
   }
 }

@@ -10,23 +10,7 @@
 }
 .messenger__right {
   width: 100%;
-}
-/* .messenger__right > div {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-} */
-.messenger__right--no-chat {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.messenger__button-profile {
-  width: fit-content;
-  margin-left: auto;
-  padding: 12px;
+  height: inherit;
 }
 .messenger__border {
   border: 1px solid var(--border-color);

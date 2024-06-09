@@ -17,3 +17,4 @@ export { ProfileAvatar } from './profile-avatar';
 export { ChatWrapper } from './chat-wrapper';
 export { ChatHeader } from './chat-header';
 export { ChatBody } from './chat-body';
+export { ChatFooter } from './chat-footer';

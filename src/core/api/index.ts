@@ -1,4 +1,4 @@
-import { IChat, IUser } from '../../core/types';
+import { IChat, IUser } from '../types/api';
 import UserApi from './user';
 import ChatApi from './chat';
 
@@ -33,7 +33,9 @@ export const api = {
     const response = await userApi.changeInfo(data);
     return errorHandler<IUser.InfoResponse>(response);
   },
-  changePassword: async (data: IUser.PasswordRequest): Promise<IUser.PasswordResponse> => {
+  changePassword: async (
+    data: IUser.PasswordRequest,
+  ): Promise<IUser.PasswordResponse> => {
     const response = await userApi.changePassword(data);
     return errorHandler<IUser.PasswordResponse>(response);
   },
@@ -41,11 +43,15 @@ export const api = {
     const response = await userApi.changeAvatar(data);
     return errorHandler<IUser.InfoResponse>(response);
   },
-  getChats: async (data?: IChat.GETChatUsersRequest): Promise<IChat.GETChatsResponse[]> => {
+  getChats: async (
+    data?: IChat.GETChatUsersRequest,
+  ): Promise<IChat.GETChatsResponse[]> => {
     const response = await chatApi.getChats(data);
     return errorHandler<IChat.GETChatsResponse[]>(response);
   },
-  createChat: async (data?: IChat.CreateChatRequest): Promise<IChat.CreateChatResponse> => {
+  createChat: async (
+    data?: IChat.CreateChatRequest,
+  ): Promise<IChat.CreateChatResponse> => {
     const response = await chatApi.createChat(data);
     return errorHandler<IChat.CreateChatResponse>(response);
   },
@@ -57,7 +63,9 @@ export const api = {
     const response = await chatApi.deleteChat(data);
     return errorHandler<void>(response);
   },
-  searchUser: async (data: IChat.GETChatUsersRequest): Promise<IUser.InfoResponse[]> => {
+  searchUser: async (
+    data: IChat.GETChatUsersRequest,
+  ): Promise<IUser.InfoResponse[]> => {
     const response = await chatApi.searchChatUsers(data);
     return errorHandler<IUser.InfoResponse[]>(response);
   },
@@ -65,7 +73,9 @@ export const api = {
     const response = await chatApi.addUserToChat(data);
     return errorHandler<void>(response);
   },
-  getChatUsers: async (data: IChat.GetChatUsersRequest): Promise<IChat.GetChatUsersResponse[]> => {
+  getChatUsers: async (
+    data: IChat.GetChatUsersRequest,
+  ): Promise<IChat.GetChatUsersResponse[]> => {
     const response = await chatApi.getChatUsers(data);
     return errorHandler<IChat.GetChatUsersResponse[]>(response);
   },
@@ -73,7 +83,9 @@ export const api = {
     const response = await chatApi.deleteChatUsers(data);
     return errorHandler<void>(response);
   },
-  getToken: async (data: IChat.GetChatTokenRequest): Promise<IChat.GetChatTokenResponse> => {
+  getToken: async (
+    data: IChat.GetChatTokenRequest,
+  ): Promise<IChat.GetChatTokenResponse> => {
     const response = await chatApi.getChatToken(data);
     return errorHandler<IChat.GetChatTokenResponse>(response);
   },

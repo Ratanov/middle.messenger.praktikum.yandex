@@ -1,7 +1,6 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { IUser, TEvents } from '../../core/types/api';
 import { api } from '../../core/api';
-import { IUser } from '../../core/types';
 
 export interface IProfileImageProps {
   isEdit?: boolean;
@@ -54,10 +53,13 @@ export default class ProfileAvatar extends Block<IProfileImageProps, Ref> {
     const { user, isEdit } = this.props;
     return ` 
       <div>
-        <div class="profile__avatar ${isEdit === true ? 'profile__avatar--edit': ''}">
-          <img src="${user?.avatar ? `
-            https://ya-praktikum.tech/api/v2/resources${user?.avatar}` 
-            : 'assets/svg/profile-no-avatar.svg'}" alt="${user?.first_name} avatar"
+        <div class="profile__avatar ${isEdit === true ? 'profile__avatar--edit' : ''}">
+          <img src="${
+            user?.avatar
+              ? `
+            https://ya-praktikum.tech/api/v2/resources${user?.avatar}`
+              : 'assets/svg/profile-no-avatar.svg'
+          }" alt="${user?.first_name} avatar"
           >
           <form>
             ${isEdit === true ? '<label for="avatar" class="profile__label">Поменять</label>' : ''}

@@ -29,7 +29,7 @@ export function initialComponents() {
   registerComponent('ProfileEdit', Components.ProfileEdit);
   registerComponent('ProfileEditPassword', Components.ProfileEditPassword);
   registerComponent('ProfileAvatar', Components.ProfileAvatar);
-  registerComponent('MessageList', Components.Message);
+  registerComponent('Message', Components.Message);
   registerComponent('Chat', Components.Chat);
   registerComponent('ChatList', Components.ChatList);
   registerComponent('ChatListItem', Components.ChatListItem);
@@ -38,4 +38,5 @@ export function initialComponents() {
   registerComponent('ChatWrapper', Components.ChatWrapper);
   registerComponent('ChatHeader', Components.ChatHeader);
   registerComponent('ChatBody', Components.ChatBody);
+  registerComponent('ChatFooter', Components.ChatFooter);
 }

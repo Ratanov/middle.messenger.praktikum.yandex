@@ -1,11 +1,9 @@
-
 import { initialRoutes, routes } from './core/app/withRoutes';
 import { api } from './core/api';
 import Router from './core/router/Router';
-import WebSocketTransport from './core/webSocket';
-import { IChatProps } from './components/chat/chat';
+import { IChatProps } from './components/chat';
 import { initialComponents } from './core/app/initialComponents';
-
+import WebSocketTransport from './core/api/webSocket';
 
 declare global {
   interface Window {
@@ -30,7 +28,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     return;
   }
 
-  if (window.location.pathname === routes.login.route || window.location.pathname === routes.signUp.route) {
+  if (
+    window.location.pathname === routes.login.route ||
+    window.location.pathname === routes.signUp.route
+  ) {
     Router.go(routes.messenger.route);
   }
 });

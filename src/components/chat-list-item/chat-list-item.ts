@@ -1,6 +1,6 @@
 import Block from '../../core/Block';
-import { IChat, TEvents } from '../../core/types';
-import { convertToHHMM } from '../../core/utilities';
+import { IChat, TEvents } from '../../core/types/api';
+import { convertTime } from '../../core/utilities';
 
 interface IChatListItemProps extends Partial<IChat.GETChatsResponse> {
   events?: Partial<TEvents>;
@@ -36,7 +36,7 @@ export default class ChatListItem extends Block<IChatListItemProps, Ref> {
             <span ref="name" class="chat-list-body-item__title">${title}</span>
             ${
               last_message
-                ? `<span ref="time" class="chat-list-body-item__date">${convertToHHMM(last_message?.time)}</span>`
+                ? `<span ref="time" class="chat-list-body-item__date">${convertTime(last_message?.time)}</span>`
                 : ''
             }
           </div>

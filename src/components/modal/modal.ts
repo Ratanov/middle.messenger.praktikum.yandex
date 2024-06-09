@@ -1,5 +1,5 @@
 import Block from '../../core/Block';
-import { TEvents } from '../../core/types';
+import { TEvents } from '../../core/types/api';
 
 export interface IModalProps {
   events?: Partial<TEvents>;

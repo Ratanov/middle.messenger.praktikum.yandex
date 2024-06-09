@@ -1,8 +1,9 @@
 import Handlebars from 'handlebars';
 import EventBus from './EventBus';
 import { nanoid } from 'nanoid';
-import { TEvents } from './types';
 import { IChildren } from './registerComponent';
+import { TEvents } from './types/api';
+import { isEqualObjects } from './utilities'
 
 export type RefType = {
   [key: string]: Element | Block<object>;
@@ -17,48 +18,6 @@ type TContextAndStubs<Props extends object, R extends RefType> = {
   __refs: RefType;
   __children: IChildren<Props, R>[];
 } & Props;
-
-/**
- * Проверка, являются ли два объекта равными, рекурсивно сравнивая их свойства.
- * @param object1 - Первый объект для сравнения.
- * @param object2 - Второй объект для сравнения.
- * @returns `true`, если объекты равны, `false` в противном случае.
- */
-export function isEqualObjects<T extends object>(
-  object1: T,
-  object2: T,
-): boolean {
-  const keys1 = Object.keys(object1) as Array<keyof T>;
-  const keys2 = Object.keys(object2) as Array<keyof T>;
-
-  if (keys1.length !== keys2.length) {
-    return false;
-  }
-
-  for (const key of keys1) {
-    const val1 = object1[key];
-    const val2 = object2[key];
-    const areObjects = isObject(val1) && isObject(val2);
-
-    if (
-      (areObjects && !isEqualObjects(val1 as object, val2 as object)) ||
-      (!areObjects && val1 !== val2)
-    ) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-/**
- * Проверка, является ли значение объектом (не null и не примитив).
- * @param object - Значение для проверки.
- * @returns `true`, если значение является объектом, `false` в противном случае.
- */
-function isObject(object: unknown): object is object {
-  return object != null && typeof object === 'object';
-}
 
 class Block<
   Props extends object & { events?: Partial<TEvents> },

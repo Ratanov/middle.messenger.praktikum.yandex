@@ -2,7 +2,7 @@ import Block from '../../core/Block';
 import { api } from '../../core/api';
 import Router from '../../core/router/Router';
 import { routes } from '../../core/app/withRoutes';
-import { TEvents } from '../../core/types';
+import { TEvents } from '../../core/types/api';
 
 interface IProfileProps {
   onBack?: Partial<TEvents>;
@@ -22,12 +22,13 @@ export class Profile extends Block<IProfileProps> {
       isProfileNavigate: true,
       onBack: {
         click: () => {
-          Router.go(routes.messenger.route)
+          Router.go(routes.messenger.route);
         },
       },
       onChangeData: {
         click: (e) => {
-          e.preventDefault()
+          e.preventDefault();
+          e.stopPropagation();
           this.setProps({
             content: 'profileEdit',
             isEditAvatar: true,
@@ -37,7 +38,8 @@ export class Profile extends Block<IProfileProps> {
       },
       onChangePassword: {
         click: (e) => {
-          e.preventDefault()
+          e.preventDefault();
+          e.stopPropagation();
           this.setProps({
             content: 'profileEditPassword',
             isEditAvatar: false,
@@ -49,7 +51,6 @@ export class Profile extends Block<IProfileProps> {
         click: () => api.logout().finally(() => Router.go(routes.login.route)),
       },
     });
-
   }
 
   protected render(): string {
@@ -62,11 +63,13 @@ export class Profile extends Block<IProfileProps> {
         <div class="profile__right">
           {{{ ProfileAvatar isEdit=isEditAvatar }}}
 
-          ${ content === 'profile' ? '{{{ ProfileView }}}' : '' }
-          ${ content === 'profileEdit' ? '{{{ ProfileEdit }}}' : '' }
-          ${ content === 'profileEditPassword' ? '{{{ ProfileEditPassword }}}' : '' }
+          ${content === 'profile' ? '{{{ ProfileView }}}' : ''}
+          ${content === 'profileEdit' ? '{{{ ProfileEdit }}}' : ''}
+          ${content === 'profileEditPassword' ? '{{{ ProfileEditPassword }}}' : ''}
 
-          ${ isProfileNavigate ? `
+          ${
+            isProfileNavigate
+              ? `
             {{# Form className="profile__list" }}
               <div class="profile__row mt-5 pt-5">
                 {{{ Link label="Изменить данные" name="change_data" events=onChangeData }}}
@@ -78,7 +81,9 @@ export class Profile extends Block<IProfileProps> {
                 {{{ Link label="Выйти" className="danger" name="exit_btn" events=onExit }}}
               </div>
             {{/Form}}
-            ` : '' }
+            `
+              : ''
+          }
         </div>
       </div>
     `;
