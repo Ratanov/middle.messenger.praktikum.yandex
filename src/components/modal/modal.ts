@@ -33,6 +33,6 @@ export default class Modal extends Block<IModalProps, Ref> {
   }
 
   protected render(): string {
-    return '<div class="modal-backdrop" ref="modal"></div>'
+    return '<div class="modal-backdrop" ref="modal"></div>';
   }
 }

@@ -5,6 +5,7 @@ import ChatApi from './chat';
 const userApi = new UserApi();
 const chatApi = new ChatApi();
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 const errorHandler = <T>(response: any): T => {
   if (response?.reason) {
     throw new Error(response.reason);

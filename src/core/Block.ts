@@ -3,7 +3,7 @@ import EventBus from './EventBus';
 import { nanoid } from 'nanoid';
 import { IChildren } from './registerComponent';
 import { TEvents } from './types/api';
-import { isEqualObjects } from './utilities'
+import { isEqualObjects } from './utilities';
 
 export type RefType = {
   [key: string]: Element | Block<object>;

@@ -1,5 +1,4 @@
 import Block from '../../core/Block';
-import { ChatWrapper, ChatHeader, ChatBody, ChatFooter } from '../index';
 import { IChat } from '../../core/types/api';
 import { IMessageProps } from '../message/message';
 
@@ -9,13 +8,6 @@ export interface IChatProps {
   messages?: Array<IMessageProps>;
   updateChatList?: () => void;
 }
-
-type Ref = {
-  chatWrapper?: ChatWrapper;
-  chatHeader?: ChatHeader;
-  chatBody?: ChatBody;
-  chatFooter?: ChatFooter;
-};
 
 export default class Chat extends Block<IChatProps> {
   constructor(props: IChatProps) {

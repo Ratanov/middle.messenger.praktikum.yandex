@@ -22,7 +22,10 @@ type Ref = {
   password_repeat: Input;
 };
 
-export default class ProfileEditPassword extends Block<IProfileEditPasswordProps, Ref> {
+export default class ProfileEditPassword extends Block<
+  IProfileEditPasswordProps,
+  Ref
+> {
   constructor() {
     super({
       onPassword: {
@@ -38,7 +41,7 @@ export default class ProfileEditPassword extends Block<IProfileEditPasswordProps
       onCancel: {
         click: () => {
           Router.go(routes.profile.route);
-        }
+        },
       },
       events: {
         submit: (e) => this.handleSubmit(e),

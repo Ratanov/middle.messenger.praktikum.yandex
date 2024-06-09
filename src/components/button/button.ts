@@ -11,7 +11,7 @@ interface IButtonProps {
 
 type Ref = {
   button: HTMLButtonElement;
-}
+};
 
 export default class Button extends Block<IButtonProps, Ref> {
   constructor(props: IButtonProps) {

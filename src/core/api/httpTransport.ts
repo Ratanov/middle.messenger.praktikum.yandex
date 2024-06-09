@@ -6,6 +6,7 @@ enum METHOD {
   DELETE = 'DELETE',
 }
 
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 function queryStringify(data: { [key: string]: any }) {
   if (typeof data !== 'object') {
     throw new Error('Data must be object');

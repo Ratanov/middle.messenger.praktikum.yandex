@@ -1,3 +1,4 @@
+/* eslint-disable  @typescript-eslint/no-explicit-any */
 function render(query: string, block: any) {
   const app = document.querySelector(query);
   app?.replaceChildren(block.getContent()!);

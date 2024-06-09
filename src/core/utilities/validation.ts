@@ -26,15 +26,17 @@ export const validationLogin = (login: string): TValidationResult => {
   }
 
   if (hasSpaces) {
-    return { 
-      result: false, 
-      message: 'Не может содержать пробелы' };
+    return {
+      result: false,
+      message: 'Не может содержать пробелы',
+    };
   }
 
   if (isOnlyNumbers) {
-    return { 
-      result: false, 
-      message: 'Не может содержать только цифры' };
+    return {
+      result: false,
+      message: 'Не может содержать только цифры',
+    };
   }
 
   if (!hasInvalidCharsLogin) {
@@ -114,7 +116,8 @@ export const validationPassword = (password: string): TValidationResult => {
   const minLength = 6;
   const maxLength = 40;
 
-  const isValidLength = password.length >= minLength && password.length <= maxLength;
+  const isValidLength =
+    password.length >= minLength && password.length <= maxLength;
   const isUppercase = regex.isUppercase.test(password);
   const isHaveNumber = regex.isHaveNumber.test(password);
 

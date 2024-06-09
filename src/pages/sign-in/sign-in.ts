@@ -34,7 +34,7 @@ export class SignIn extends Block<ISignInPageProps, Ref> {
       },
       onSignUp: {
         click: () => Router.go(routes.signUp.route),
-      }
+      },
     });
   }
 

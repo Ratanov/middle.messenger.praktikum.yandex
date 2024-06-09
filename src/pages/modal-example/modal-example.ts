@@ -26,6 +26,6 @@ export class ModalExample extends Block<IModalProps> {
       {{{ Modal id="modal_upload_error" title="Ошибка, попробуйте ещё раз" button="Поменять" upload=true titleClassName="danger" }}}
       {{{ Modal id="modal_add_user" title="Добавить пользователя" button="Добавить" }}}
       {{{ Modal id="modal_remove_user" title="Удалить пользователя" button="Удалить" }}}
-    `
+    `;
   }
 }

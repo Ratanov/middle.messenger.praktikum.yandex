@@ -18,7 +18,7 @@
   background: var(--text-secondary-color);
 }
 .profile__avatar--edit:hover img {
-  opacity: .4;
+  opacity: 0.4;
 }
 .profile__avatar--edit .profile__label {
   display: block;
