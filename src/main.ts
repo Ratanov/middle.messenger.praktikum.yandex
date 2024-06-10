@@ -4,14 +4,13 @@ import Router from './core/router/Router';
 import { IChatProps } from './components/chat';
 import { initialComponents } from './core/app/initialComponents';
 import WebSocketTransport from './core/api/webSocket';
-import { IMessageProps } from './components/message/message';
 import { IChat } from './core/types/api';
 
 declare global {
   interface Window {
     updateChatList: () => void;
     onChangeChat: (data: IChatProps) => void;
-    messages?: Array<IChat.WSMessage> & IMessageProps;
+    messages?: Array<IChat.WSMessageExt>;
     WebSocketTransport: WebSocketTransport;
   }
 }

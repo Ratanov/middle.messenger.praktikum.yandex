@@ -8,8 +8,9 @@ import { ChatBodyWrapper } from '../';
 export interface IChatBodyProps {
   chatConfig?: IChat.GETChatsResponse;
   events?: Partial<TEvents>;
-  messages?: Array<IChat.WSMessage>;
-  userInfo: InfoResponse;
+  messages?: Array<IChat.WSMessageExt>;
+  userInfo?: InfoResponse;
+  chatUsers?: Array<IChat.GetChatUsersResponse>;
 }
 
 type Ref = {
@@ -26,15 +27,25 @@ export default class ChatBody extends Block<IChatBodyProps, Ref> {
         .getToken({ chatId: chatId })
         .then(async (data) => {
           const userInfo = await api.userInfo();
+          const chatUsers = await api.getChatUsers({ id: chatId });
           WebSocketTransport.createConnection(
             userInfo.id,
             chatId,
             data.token,
-            (messages) =>
+            (messages) => {
+              messages.forEach((message) => {
+                const user = chatUsers.find(
+                  (user) => user.id === message.user_id,
+                );
+                if (user) {
+                  message.firstName = user.first_name;
+                }
+              });
               this.setProps({
                 messages,
                 userInfo: userInfo,
-              }),
+              });
+            },
           );
         })
         .then(() => {
@@ -61,6 +72,7 @@ export default class ChatBody extends Block<IChatBodyProps, Ref> {
         {{#each messages}}
           {{{ Message
             createdBy=${this.props.userInfo?.id}
+            firstName=this.firstName
             user_id=this.user_id
             time=this.time
             type=this.type
@@ -72,3 +84,5 @@ export default class ChatBody extends Block<IChatBodyProps, Ref> {
     `;
   }
 }
+
+// chatUsers=${this.props.chatUsers}

@@ -2,16 +2,16 @@
   display: flex;
   align-self: flex-end;
   justify-content: flex-start;
-  padding: 5px 8px;
+  padding: 4px 8px;
   position: relative;
   z-index: 1;
-  margin: 6px 0;
+  margin: 5px 0;
   background: #e4edfd;
   box-shadow: 0 0 6px 0 #00000024;
   border-radius: 10px;
   max-width: 50%;
   min-width: 40px;
-  font-size: 15px;
+  font-size: 14px;
 }
 .message--incoming {
   align-self: flex-start;

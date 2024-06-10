@@ -70,3 +70,8 @@ export interface WSMessage {
   type: string;
   user_id: number;
 }
+
+export interface WSMessageExt extends WSMessage {
+  createdBy: number;
+  firstName: string;
+}

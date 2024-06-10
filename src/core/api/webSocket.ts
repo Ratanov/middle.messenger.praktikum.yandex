@@ -6,7 +6,7 @@ export default class WebSocketTransport {
   private static pingIntervalId: number;
   private static url = '';
   private static urlPrefix = 'wss://ya-praktikum.tech/ws/chats/';
-  private static callback: (messages: IChat.WSMessage[]) => void;
+  private static callback: (messages: IChat.WSMessageExt[]) => void;
 
   private constructor() {}
 
@@ -80,7 +80,7 @@ export default class WebSocketTransport {
     userId: number,
     chatId: number,
     token: string,
-    callback: (messages: IChat.WSMessage[]) => void,
+    callback: (messages: IChat.WSMessageExt[]) => void,
   ) {
     const prevUrl = this.url;
     this.url = this.urlPrefix + userId + '/' + chatId + '/' + token;

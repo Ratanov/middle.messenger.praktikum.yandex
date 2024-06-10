@@ -59,7 +59,6 @@ export default class ChatHeader extends Block<TChatHeaderProps, Ref> {
       onAddUser: {
         click: () => {
           const value = this.refs.inputLogin?.value();
-
           api
             .searchUser({ login: value })
             .then((data) => {
