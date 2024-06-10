@@ -1,11 +1,10 @@
 import Block from '../../core/Block';
 import { IChat } from '../../core/types/api';
-import { IMessageProps } from '../message/message';
 
 export interface IChatProps {
   chatConfig?: IChat.GETChatsResponse;
   isChatOpen?: boolean;
-  messages?: Array<IMessageProps>;
+  messages?: Array<IChat.WSMessageExt>;
   updateChatList?: () => void;
 }
 
