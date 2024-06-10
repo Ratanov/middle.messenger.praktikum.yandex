@@ -20,8 +20,11 @@
 .profile__avatar--edit:hover img {
   opacity: 0.4;
 }
-.profile__avatar--edit .profile__label {
+.profile__avatar--edit:hover .profile__label {
   display: block;
+}
+.profile__avatar--edit .profile__label {
+  display: none;
   color: white;
   position: absolute;
   left: 50%;

@@ -8,6 +8,7 @@ interface IChatListProps {
   events?: Partial<TEvents>;
   onModalOpen?: Partial<TEvents>;
   onChatCreate?: Partial<TEvents>;
+  onCloseModal?: Partial<TEvents>;
 }
 
 type Ref = {
@@ -43,6 +44,11 @@ export default class ChatList extends Block<IChatListProps, Ref> {
               console.error(error);
               input.setError(error.message);
             });
+        },
+      },
+      onCloseModal: {
+        click: () => {
+          this.refs.modal?.close();
         },
       },
     });
@@ -111,6 +117,12 @@ export default class ChatList extends Block<IChatListProps, Ref> {
                     className="button-primary"
                     events=onChatCreate
                 }}}
+                {{{ Button
+                  label="Закрыть"
+                  name="close_create_chat_modal"
+                  className="mt-2"
+                  events=onCloseModal
+              }}}
               {{/Form}}
             </div>
           </div>

@@ -12,7 +12,7 @@ export default class Message extends Block<Partial<IChat.WSMessageExt>> {
       this.props;
     return `
       <div class="message ${createdBy === user_id ? '' : 'message--incoming'}">
-        <span>${firstName}:</span>&nbsp;
+        ${createdBy === user_id ? '' : `<span class="message__name">${firstName}:</span>`}
         ${
           type === 'image'
             ? `

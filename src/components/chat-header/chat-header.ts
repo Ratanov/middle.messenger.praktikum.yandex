@@ -11,7 +11,7 @@ export interface TChatHeaderProps {
   onDeleteUserModalOpen?: Partial<TEvents>;
   onDeleteChat?: Partial<TEvents>;
   users?: Array<IChat.GetChatUsersResponse & { events?: Partial<TEvents> }>;
-  closeModal?: Partial<TEvents>;
+  onCloseModal?: Partial<TEvents>;
 }
 
 type Ref = {
@@ -106,7 +106,7 @@ export default class ChatHeader extends Block<TChatHeaderProps, Ref> {
           }
         },
       },
-      closeModal: {
+      onCloseModal: {
         click: () => {
           this.refs.addUserModal?.close();
           this.refs.deleteUserModal?.close();
@@ -199,7 +199,7 @@ export default class ChatHeader extends Block<TChatHeaderProps, Ref> {
                     label="Закрыть"
                     name="close_add_user_modal"
                     className="mt-2"
-                    events=closeModal
+                    events=onCloseModal
                 }}}
               {{/Form}}
             </div>
@@ -218,11 +218,11 @@ export default class ChatHeader extends Block<TChatHeaderProps, Ref> {
                     {{{ Link label=this.login events=this.events }}}
                    </div>
                 {{/each}}
-
                 {{{ Button
                     label="Закрыть"
                     name="close_delete_user_modal"
-                    events=closeModal
+                    className="mt-2"
+                    events=onCloseModal
                 }}}
               {{/Form}}
             </div>

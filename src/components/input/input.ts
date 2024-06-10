@@ -72,7 +72,7 @@ export default class Input extends Block<IInputProps, Ref> {
             ref="input"
             name="${name || ''}"
             type="${type || 'text'}"
-            class="${className ? `input__element ${className}` : 'input__element'}"
+            class="${className ? `input__element ${className} ${readonly ? 'input__element--readonly' : ''}` : `input__element ${readonly ? 'input__element--readonly' : ''}`}"
             ${readonly ? 'readonly' : ''}
             placeholder=""
             ${value ? `value="${value}"` : ''}

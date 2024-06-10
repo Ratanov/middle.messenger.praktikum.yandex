@@ -48,25 +48,27 @@ export default class ChatBody extends Block<IChatBodyProps, Ref> {
             },
           );
         })
-        .then(() => {
-          for (let i = 1; i <= 10; i++) {
-            setTimeout(() => {
-              const wrapper = this.refs.chat_body_wrapper.element;
-              const wrapperHasChild = wrapper?.hasChildNodes();
-              if (wrapperHasChild) {
-                wrapper?.scrollTo(0, wrapper.scrollHeight);
-                return (i = 10);
-              }
-            }, i * 100);
-          }
-        })
         .catch((err) => {
           console.error(err);
         });
     }
   }
 
+  private scrollToBottom() {
+    for (let i = 1; i <= 10; i++) {
+      setTimeout(() => {
+        const wrapper = this.refs.chat_body_wrapper.element;
+        const wrapperHasChild = wrapper?.hasChildNodes();
+        if (wrapperHasChild) {
+          wrapper?.scrollTo(0, wrapper.scrollHeight);
+          return (i = 10);
+        }
+      }, i * 10);
+    }
+  }
+
   protected render(): string {
+    this.scrollToBottom();
     return `
       {{#ChatBodyWrapper ref="chat_body_wrapper"}}
         {{#each messages}}
@@ -84,5 +86,3 @@ export default class ChatBody extends Block<IChatBodyProps, Ref> {
     `;
   }
 }
-
-// chatUsers=${this.props.chatUsers}
