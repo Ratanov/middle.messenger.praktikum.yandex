@@ -20,9 +20,6 @@
 .profile__avatar--edit:hover img {
   opacity: 0.4;
 }
-.profile__avatar--edit:hover .profile__label {
-  display: block;
-}
 .profile__avatar--edit .profile__label {
   display: none;
   color: white;
@@ -33,6 +30,9 @@
   text-align: center;
   font-weight: 700;
   cursor: pointer;
+}
+.profile__avatar--edit:hover .profile__label {
+  display: block;
 }
 .profile__name {
   height: 50px;
