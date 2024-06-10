@@ -3,6 +3,7 @@ import { api } from '../../core/api';
 import { IChat, TEvents } from '../../core/types/api';
 import WebSocketTransport from '../../core/api/webSocket';
 import { InfoResponse } from '../../core/types/api/user';
+import { ChatBodyWrapper } from '../';
 
 export interface IChatBodyProps {
   chatConfig?: IChat.GETChatsResponse;
@@ -11,7 +12,11 @@ export interface IChatBodyProps {
   userInfo: InfoResponse;
 }
 
-export default class ChatBody extends Block<IChatBodyProps> {
+type Ref = {
+  chat_body_wrapper: ChatBodyWrapper;
+};
+
+export default class ChatBody extends Block<IChatBodyProps, Ref> {
   constructor(props: IChatBodyProps) {
     super(props);
 
@@ -32,6 +37,18 @@ export default class ChatBody extends Block<IChatBodyProps> {
               }),
           );
         })
+        .then(() => {
+          for (let i = 1; i <= 10; i++) {
+            setTimeout(() => {
+              const wrapper = this.refs.chat_body_wrapper.element;
+              const wrapperHasChild = wrapper?.hasChildNodes();
+              if (wrapperHasChild) {
+                wrapper?.scrollTo(0, wrapper.scrollHeight);
+                return (i = 10);
+              }
+            }, i * 100);
+          }
+        })
         .catch((err) => {
           console.error(err);
         });
@@ -40,7 +57,7 @@ export default class ChatBody extends Block<IChatBodyProps> {
 
   protected render(): string {
     return `
-      <div class="chat__body px-5">
+      {{#ChatBodyWrapper ref="chat_body_wrapper"}}
         {{#each messages}}
           {{{ Message
             createdBy=${this.props.userInfo?.id}
@@ -51,7 +68,7 @@ export default class ChatBody extends Block<IChatBodyProps> {
             file=this.file
           }}}
         {{/each}}
-      </div>      
+      {{/ChatBodyWrapper}}      
     `;
   }
 }

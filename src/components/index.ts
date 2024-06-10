@@ -16,5 +16,6 @@ export { ProfileEditPassword } from './profile-edit-password';
 export { ProfileAvatar } from './profile-avatar';
 export { ChatWrapper } from './chat-wrapper';
 export { ChatHeader } from './chat-header';
+export { ChatBodyWrapper } from './chat-body-wrapper';
 export { ChatBody } from './chat-body';
 export { ChatFooter } from './chat-footer';

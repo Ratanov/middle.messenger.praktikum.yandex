@@ -75,8 +75,8 @@ export default class Input extends Block<IInputProps, Ref> {
             class="${className ? `input__element ${className}` : 'input__element'}"
             ${readonly ? 'readonly' : ''}
             placeholder=""
-            ${value ? `value="${value}"` : null}
-            
+            ${value ? `value="${value}"` : ''}
+            autocomplete="off"
           />
           ${label ? `<div class="input__label">${label}</div>` : ''}
           <span class="input__error" ref="error"></span>
