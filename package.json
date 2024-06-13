@@ -15,7 +15,8 @@
     "stylelint:formatter": "npm run stylelint --formatter",
     "linter": "npm run lint && npm run stylelint",
     "precommit": "npm run format && npm run linter",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "mocha"
   },
   "engines": {
     "node": ">=14.0.0",
