@@ -26,6 +26,10 @@
   },
   "globals": {
     "process": "readonly",
-    "global": "readonly"
+    "global": "readonly",
+    "window": "readonly",
+    "document": "readonly",
+    "Node": "readonly",
+    "MouseEvent": "readonly"
   }
 }
