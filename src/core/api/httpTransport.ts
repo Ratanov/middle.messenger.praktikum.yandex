@@ -1,4 +1,4 @@
-enum METHOD {
+export enum METHOD {
   GET = 'GET',
   POST = 'POST',
   PUT = 'PUT',
@@ -54,6 +54,13 @@ export class HTTPTransport {
     this.request(
       `${this.apiUrl}${url}`,
       { ...options, method: METHOD.POST },
+      options.timeout,
+    );
+
+  patch: HTTPMethod = (url, options = {}) =>
+    this.request(
+      `${this.apiUrl}${url}`,
+      { ...options, method: METHOD.PATCH },
       options.timeout,
     );
 

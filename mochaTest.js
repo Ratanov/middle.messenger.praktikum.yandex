@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
 
-const jsdom = new JSDOM('<main id="app"></main>', {
+const jsdom = new JSDOM('<div id="app"></div>', {
   url: 'http://localhost:3000',
 });
 
