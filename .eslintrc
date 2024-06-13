@@ -19,17 +19,5 @@
     "@typescript-eslint/prefer-ts-expect-error": "error",
     "@typescript-eslint/no-explicit-any": "warn",
     "prettier/prettier": "error"
-  },
-  "globals": {
-    "process": "readonly",
-    "global": "readonly",
-    "window": "readonly",
-    "document": "readonly",
-    "Node": "readonly",
-    "MouseEvent": "readonly",
-    "describe": "readonly",
-    "it": "readonly",
-    "before": "readonly",
-    "after": "readonly",
   }
 }
