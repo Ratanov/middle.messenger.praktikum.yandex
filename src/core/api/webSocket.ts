@@ -3,7 +3,7 @@ import { IChat } from '../types/api';
 export default class WebSocketTransport {
   private static instance: WebSocketTransport;
   private static ws: WebSocket;
-  private static pingIntervalId: number;
+  private static pingIntervalId: NodeJS.Timeout;
   private static url = '';
   private static urlPrefix = 'wss://ya-praktikum.tech/ws/chats/';
   private static callback: (messages: IChat.WSMessageExt[]) => void;
