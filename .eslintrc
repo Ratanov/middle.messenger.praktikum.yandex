@@ -23,6 +23,9 @@
     "@typescript-eslint/prefer-ts-expect-error": "error",
     "@typescript-eslint/no-explicit-any": "warn",
     "prettier/prettier": "error"
+  },
+  "globals": {
+    "process": "readonly",
+    "global": "readonly"
   }
-  /* ToDo: rules не работают */
 }
