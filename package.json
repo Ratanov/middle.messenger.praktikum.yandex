@@ -1,17 +1,21 @@
 {
-  "name": "sprint_3",
+  "name": "sprint_4",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "vite --port 3000",
+    "start": "vite build && vite preview --port 3000",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "dev": "vite --port 3000 --open",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx,json}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc",
     "stylelint": "stylelint \"src/**/*.css\" ",
     "stylelint:fix": "npm run stylelint --fix",
-    "stylelint:formatter": "npm run stylelint --formatter"
+    "stylelint:formatter": "npm run stylelint --formatter",
+    "linter": "npm run lint && npm run stylelint",
+    "precommit": "npm run format && npm run linter",
+    "prepare": "husky install"
   },
   "engines": {
     "node": ">=14.0.0",
@@ -31,6 +35,8 @@
     "express": "^4.19.2",
     "globals": "^15.0.0",
     "handlebars": "4.7.8",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
     "postcss": "^8.4.38",
     "prettier": "3.2.5",
     "stylelint": "^16.5.0",
@@ -42,5 +48,10 @@
   "dependencies": {
     "nanoid": "^5.0.7",
     "stylelint-config-standard": "^36.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
   }
 }
