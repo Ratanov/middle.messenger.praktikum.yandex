@@ -14,7 +14,17 @@
     "stylelint:fix": "npm run stylelint --fix",
     "stylelint:formatter": "npm run stylelint --formatter",
     "linter": "npm run lint && npm run stylelint",
-    "precommit": "npm run format && npm run linter",
+    "lint-staged": {
+      "*.{ts,js}": [
+        "npm run lint:fix",
+        "npm run format",
+        "npm test"
+      ],
+      "*.{css}": [
+        "npm run stylelint:fix"
+      ]
+    },
+    "precommit": "npx run lint-staged",
     "test": "mocha",
     "prepare": "husky install"
   },
@@ -44,6 +54,7 @@
     "husky": "8.0.3",
     "jsdom": "^24.1.0",
     "jsdom-global": "^3.0.2",
+    "lint-staged": "^15.2.7",
     "mocha": "^10.4.0",
     "nanoid": "^5.0.7",
     "postcss": "^8.4.38",
