@@ -7,12 +7,9 @@ export function initialComponents() {
   Handlebars.registerHelper(
     'ifEqual',
     function (
-      /* eslint-disable  @typescript-eslint/no-explicit-any */
-      this: any,
-      /* eslint-disable  @typescript-eslint/no-explicit-any */
-      value1: any,
-      /* eslint-disable  @typescript-eslint/no-explicit-any */
-      value2: any,
+      this: unknown,
+      value1: unknown,
+      value2: unknown,
       options: Handlebars.HelperOptions,
     ) {
       return value1 === value2 ? options.fn(this) : options.inverse(this);

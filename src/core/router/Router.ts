@@ -20,8 +20,7 @@ class Router {
     Router.__instance = this;
   }
 
-  /* eslint-disable  @typescript-eslint/no-explicit-any */
-  use(pathname: string, block: any) {
+  use(pathname: string, block: unknown) {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
 
     this.routes.push(route);

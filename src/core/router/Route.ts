@@ -12,7 +12,7 @@ class Route {
     rootQuery: string;
   };
 
-  constructor(pathname: string, view: any, props: { rootQuery: string }) {
+  constructor(pathname: string, view: unknown, props: { rootQuery: string }) {
     this._pathname = pathname;
     this._blockClass = view;
     this._block = null;
