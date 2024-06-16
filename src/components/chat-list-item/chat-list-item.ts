@@ -23,7 +23,7 @@ export default class ChatListItem extends Block<IChatListItemProps, Ref> {
   protected render(): string {
     const { id, avatar, title, last_message, unread_count } = this.props;
     return `
-      <li ref="chat-list-body-item" id=${id} class="chat-list-body-item {{#if active}}chat-list--active{{/if}}">
+      <li ref="chat-list-body-item" id=${id} class="chat-list-body-item {{#if active}}chat-list_active{{/if}}">
         <div class="chat-list-body-item__avatar">
           <img ref="avatar" src="${
             avatar

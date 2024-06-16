@@ -46,7 +46,7 @@
 .profile__row:hover {
   background-color: var(--bg-second-color);
 }
-.profile__row--no-hover:hover {
+.profile__row_no_hover:hover {
   background-color: unset;
 }
 .profile__row::after {
@@ -58,7 +58,7 @@
   bottom: 0;
   transform: translateX(-50%);
 }
-.profile__row--no-after::after {
+.profile__row_no_after::after {
   border-bottom: none;
 }
 .profile__text {

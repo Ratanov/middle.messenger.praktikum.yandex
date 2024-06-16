@@ -25,11 +25,11 @@ export default class Modal extends Block<IModalProps, Ref> {
   }
 
   public open() {
-    this.refs.modal?.classList.add('modal-backdrop--active');
+    this.refs.modal?.classList.add('modal-backdrop_active');
   }
 
   public close() {
-    this.refs.modal?.classList.remove('modal-backdrop--active');
+    this.refs.modal?.classList.remove('modal-backdrop_active');
   }
 
   protected render(): string {

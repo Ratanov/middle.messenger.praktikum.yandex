@@ -66,9 +66,9 @@
   transform: unset;
   font-size: unset;
 }
-.input__element--readonly {
+.input__element_readonly {
   background-color: var(--bg-color);
 }
-.profile__row:hover .input__element--readonly {
+.profile__row:hover .input__element_readonly {
   background-color: var(--bg-second-color);
 }

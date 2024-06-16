@@ -14,7 +14,7 @@ export default class Popup extends Block<IPopupProps> {
 
   protected render(): string {
     return `
-      <div id="{{id}}" class="popup popup--{{position}}">
+      <div id="{{id}}" class="popup popup_{{position}}">
         {{#ifEqual id "popup_user"}}
           {{#each popupUser}}
             <div class="flex align-center py-1">

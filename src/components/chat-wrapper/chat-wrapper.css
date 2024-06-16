@@ -3,7 +3,7 @@
   flex-direction: column;
   height: inherit;
 }
-.chat--no-content {
+.chat_no_content {
   display: flex;
   align-items: center;
   justify-content: center;

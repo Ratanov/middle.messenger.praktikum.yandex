@@ -14,7 +14,7 @@ export default class ChatWrapper extends Block<IChatWrapperProps> {
   protected render(): string {
     const { isChatOpen } = this.props;
     if (!isChatOpen) {
-      return '<div class="chat--no-content">Выберите чат чтобы отправить сообщение</div>';
+      return '<div class="chat_no_content">Выберите чат чтобы отправить сообщение</div>';
     }
 
     return `<div class="chat"></div>`;

@@ -53,7 +53,7 @@ export default class ProfileAvatar extends Block<IProfileImageProps, Ref> {
     const { user, isEdit } = this.props;
     return ` 
       <div>
-        <div class="profile__avatar ${isEdit === true ? 'profile__avatar--edit' : ''}">
+        <div class="profile__avatar ${isEdit === true ? 'profile__avatar_edit' : ''}">
           <img src="${
             user?.avatar
               ? `
