@@ -60,11 +60,11 @@
 
 ### Lint
 
-- `npx run lint-staged` - запуск format и линтеров JS и CSS
+- `npx lint-staged` - запуск format и линтеров JS и CSS
 - `npm run linter` — запуск lint JS и stylelint
 
 ### test
-- `npm run test` — запуск mocha
+- `npm test` — запуск mocha
 
 ## ToDo
 - временно отказался от реализации popup окна для добавления и удаления пользователей в чат, а также удаления самого чата
