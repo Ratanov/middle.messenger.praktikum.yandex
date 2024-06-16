@@ -1,0 +1,6 @@
+.chat__body {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}

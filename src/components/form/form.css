@@ -1,0 +1,10 @@
+.form-sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 30px 30px;
+  width: 340px;
+  background: white;
+  box-shadow: 0 0 6px 0 #00000024;
+  border-radius: 12px;
+}

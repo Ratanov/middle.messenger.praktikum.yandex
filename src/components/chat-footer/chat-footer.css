@@ -1,0 +1,32 @@
+.chat__footer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 50px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.chat__footer::before {
+  position: absolute;
+  content: '';
+  border-top: 1px solid var(--border-color);
+  width: 100%;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}
+.chat__send {
+  width: 100%;
+  display: flex;
+}
+.chat__area {
+  background: var(--bg-second-color);
+  padding: 7px 15px;
+  border-radius: 30px;
+  padding-left: 15px;
+  border: none;
+  resize: none;
+}
+.chat__area:focus {
+  outline: none;
+}

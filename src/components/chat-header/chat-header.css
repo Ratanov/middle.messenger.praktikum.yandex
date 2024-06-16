@@ -1,0 +1,33 @@
+/* Chat header */
+.chat__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  position: relative;
+  height: 50px;
+}
+.chat__header::after {
+  position: absolute;
+  content: '';
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+.chat__avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-second-color);
+}
+.chat__avatar label {
+  cursor: pointer;
+}
+.chat__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}

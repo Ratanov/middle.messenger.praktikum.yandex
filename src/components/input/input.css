@@ -1,0 +1,74 @@
+.input__container {
+  display: flex;
+  height: 38px; /* fix it */
+  flex-direction: column;
+  align-content: flex-end;
+  position: relative;
+  margin-top: 1.25rem; /* fix it */
+}
+.input__label {
+  width: 100%;
+  transform: translateY(-21px);
+  color: var(--text-secondary-color);
+  font-size: 13px;
+  font-weight: 500;
+  user-select: none;
+  transition:
+    font-size 0.5s,
+    transform 0.5s;
+}
+.input__element {
+  border: none;
+  padding: 0;
+  border-bottom: 1px solid var(--main-color);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-color);
+}
+.input__element:focus-visible {
+  outline: none;
+}
+.input__element:not(:placeholder-shown) + .input__label,
+.input__element:focus + .input__label {
+  transform: translateY(-36px);
+  font-size: 9px;
+}
+.input__error {
+  color: var(--error-color);
+  font-size: 10px;
+  position: absolute;
+  bottom: 3px;
+}
+/* Profile input */
+.profile__row .input__container {
+  height: 100%;
+  margin-top: 0;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+.profile__row .input__element {
+  width: 100%;
+  text-align: right;
+  border-bottom: none;
+}
+.profile__row .input__error {
+  width: 205px;
+  height: fit-content;
+  bottom: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  right: -220px;
+  line-height: 1.3;
+}
+.profile__row .input__element:not(:placeholder-shown) + .input__label,
+.profile__row .input__element:focus + .input__label {
+  width: 100%;
+  transform: unset;
+  font-size: unset;
+}
+.input__element_readonly {
+  background-color: var(--bg-color);
+}
+.profile__row:hover .input__element_readonly {
+  background-color: var(--bg-second-color);
+}

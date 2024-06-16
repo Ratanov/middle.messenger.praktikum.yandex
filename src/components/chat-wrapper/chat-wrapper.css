@@ -1,0 +1,11 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+.chat_no_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+}
